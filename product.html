@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc - Windows向け高機能関数電卓ソフト ｜ 製品情報</title>
+        <meta name="description" content="S-Calcは化学研究や材料開発に最適な高機能関数電卓です。個人や企業の業務効率を向上させるツールを開発・販売しています。">
+        <meta name="robots" content="index, follow">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e\ \(1\).webp');
+                background-color: rgba(255, 255, 255, 0.9); /* 透明度を加えて見やすくする */
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.8em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */    
+            }
+
+            /* Menuを右寄せ */
+            .menu {
+                display: flex;
+                gap: 40px;
+                margin-left: auto;
+                max-width: 60%;
+                flex-wrap: wrap;
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .slider-container {
+                position: relative;
+                max-width: 600px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .slider {
+                display: flex;
+                overflow: hidden;
+                width: 600px;
+                height: 350px;
+            }
+
+            .slide {
+                display: none;
+                width: 100%;
+                height: auto;
+            }
+
+            .prev-btn, .next-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            .prev-btn { left: 0; }
+            .next-btn { right: 0; }
+
+            .caption {
+                margin-top: 10px;
+                font-size: 1.2em;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }        
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                itechem（個人事業主）
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="link">Top</a>
+                <a class="now">Product</a>
+                <a href="news.html" class="link">News</a>
+                <a href="contact.html" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>Product</h2>
+                    <h3>高度な計算をもっと効率的に。</h3>
+
+                    <p>研究・開発・技術計算の現場では、<b>関数電卓の精度と柔軟性が求められます。</b></p>
+                    <p>しかし、市販の関数電卓では<b>カスタム関数を自由に登録できない</b>など、<b>計算業務をスムーズに進めるのが難しい</b>ことがあります。</p>
+                    <p>そこで、<b>より直感的に使え、研究・開発向けの機能を充実させたソフト</b>を開発しました。</p>
+                    <p>それが、<b>Windows向け高機能関数電卓ソフト「S-Calc」</b>です。</p>
+
+                    <div class="slider-container">
+                        <button class="prev-btn" onclick="changeSlide(-1)"><</button>
+                        <div class="slider">
+                            <a href="image/slide01.png" target="_blank">
+                                <img src="image/slide01.png" class="slide" alt="電卓部のスクリーンショット">
+                            </a>
+                            <a href="image/slide02.png" target="_blank">
+                                <img src="image/slide02.png" class="slide" alt="カスタム関数部のスクリーンショット">
+                            </a>
+                            <a href="image/slide03.png" target="_blank">
+                                <img src="image/slide03.png" class="slide" alt="カスタム関数を使用した計算のスクリーンショット">
+                            </a>
+                            <a href="image/slide04.png" target="_blank">
+                                <img src="image/slide04.png" class="slide" alt="定数部のスクリーンショット">
+                            </a>
+                        </div>
+                        <button class="next-btn" onclick="changeSlide(1)">></button>
+                        <br>
+                        <label><b>スライドの画像をクリックすると、別タブで画像を表示します。</b></label>
+                    </div>
+                    <p class="caption" id="slider-caption"></p>
+                    <script src="script/slideImage.js"></script>
+
+                    <h3>1.主要機能の概要</h3>
+                    <b>S-Calcの基本的なコンセプト</b>
+                    <p>S-Calcを開発した経緯としまして、工業高校化学科、理系4大化学科を卒業した私がSE（システムエンジニア）として業務をしている際、</p>
+                    <p>WindowsPCで使える使いやすい関数電卓ソフトは無いかと考えたことがことの発端となっております。</p>
+                    <p>SEとして会社に勤務している時の計算は、大体がWindowsに当時付属していた電卓もしくは某表計算ソフトでの計算となっており、</p>
+                    <p>関数電卓ではなかったWindowsの電卓での計算式の入力や、某表計算ソフトでの関数の入力についてメンバに連携するのが困難であったことがありました。</p>
+                    <p>そのような経緯から、慣れている関数の書き方や関数や定数の連携が簡単に行えるような関数電卓の開発を行いました。</p>
+                    <p>ですので、「S-Calc」はグループでの作業に向いているWindows向け関数電卓ソフトとなっております。</p>
+                    <p>「S-Calc」は研究者の方や技術者の方、エンジニアの方に向いているソフトであると考えています。</p>
+
+                    <h3>2.具体的な機能</h3>
+                    <h4>カスタム関数</h4>
+                    <p>ユーザ定義の数式を登録・活用することが出来る機能。</p>
+                    <img src="image/slide02.png">
+                    <h4>計算履歴</h4>
+                    <p>過去の計算を参照。式、解の再利用可。</p>
+                    <img src="image/slide01.png">
+                    <h4>定数機能</h4>
+                    <p>よく使う定数を保存・呼び出しすることが出来る機能。</p>
+                    <img src="image/slide04.png">
+                    <h4>周期表機能</h4>
+                    <p>現在IUPACが定めている最新周期表に準拠した元素データを搭載し、そのデータを計算に使用することが出来る機能。</p>
+                    <img src="image/PeriodicTableWindow.png">
+                    </p>
+
+                    <h3>3.活用例</h3>
+                    <img src="image/calcEx.png">
+                    <p>0℃、1気圧、1molの気体の体積が22.4Lであることは、化学を学んだ方なら一度は目にしたことがあるでしょう。</p>
+                    <p>理想気体の状態方程式（PV=nRT）の式をVについての式に変形して、22.4lとなることを確認しました。</p>
+
+                    <h3>4.購入リンク</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfOaboencuTVK_7n8mYTUyl4I1GJVcBjlKto49vtqZD3uJPRg/viewform?usp=dialog" target="_blank" style="margin-left: 20px;">購入リンクはこちら</a>
+                    <p>※試用版（機能制限版）は「計算履歴」「カスタム関数」「定数」の機能を除いた、計算部分のみのご提供となります。</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 岡野 翔. All rights reserved.</p>
+            <p><a href="contact.html">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a></p>
+        </footer>
+    </body>
+</html>
