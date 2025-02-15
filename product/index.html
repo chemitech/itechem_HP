@@ -29,6 +29,10 @@
                 font-weight: bold;
                 margin-top: 20px;
             }
+            label{
+                display: block;
+                text-align: center;
+            }
             .header{
                 display: flex;
                 justify-content: space-between;
@@ -107,6 +111,7 @@
                 text-align: center;
                 overflow: auto;
                 width: 100%;
+                display: flex;
                 justify-content: center; /* 中央寄せ */
                 align-items: center; /* 垂直方向の中央寄せ */
             }
@@ -210,8 +215,8 @@
                         </div>
                         <button class="next-btn" onclick="changeSlide(1)">></button>
                         <br>
-                        <label><b>スライドの画像をクリックすると、別タブで画像を表示します。</b></label>
                     </div>
+                    <label><b>スライドの画像をクリックすると、別タブで画像を表示します。</b></label>
                     <p class="caption" id="slider-caption"></p>
                     <script src="script/slideImage.js"></script>
 
