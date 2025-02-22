@@ -57,7 +57,13 @@
                 color: white;
                 text-align: left; /* 明示的に左寄せ */
                 flex-shrink: 0; /* ロゴが伸縮しないようにする */
-                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */    
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */   
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
             }
 
             /* Menuを右寄せ */
