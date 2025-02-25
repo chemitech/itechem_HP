@@ -193,33 +193,31 @@
                       <script>
                         document.getElementById("orderForm").addEventListener("submit", function(event) {
                             event.preventDefault(); // フォームのデフォルト送信を防ぐ
-                
+
                             let formData = new FormData(this);
                             let jsonData = {};
                             formData.forEach((value, key) => { jsonData[key] = value; });
-                
+
                             // 送信ボタンのテキストを変更（送信中）
                             let submitButton = document.querySelector("button[type='submit']");
                             submitButton.textContent = "送信中...";
 
                             fetch("https://script.google.com/macros/s/AKfycbx8bEJTg62KTM6IboBG7BGtEV8jKMHFVYKGPUtEcNO12PzAdcdfMRmdGUxmQL8_HYBG/exec", {
                                 method: "POST",
-                                mode: "no-cors", // ✅ CORS回避のために追加
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(jsonData)
                             })
-                            .then(response => {
-
-                            // フォームをクリア
-                            document.getElementById("orderForm").reset();
-
-                            // モーダルを表示（オプション）
-                            alert("注文を受け付けました！");
-                            
-                            // 送信ボタンのテキストを変更（注文する）
-                            submitButton.textContent = "注文する";
-                            
+                            .then(response => response.text()) // ✅ レスポンスを適切に処理
+                            .then(data => {
+                                // 送信完了後の処理
+                                alert("注文を受け付けました！"); // ✅ アラート表示
+                                document.getElementById("orderForm").reset(); // ✅ フォームをクリア
+                                submitButton.textContent = "注文する"; // ✅ ボタンのテキストを戻す
                             })
+                            .catch(error => {
+                                alert("エラーが発生しました。もう一度お試しください。");
+                                submitButton.textContent = "注文する";
+                            });
                         });
                     </script>
                 </div>
