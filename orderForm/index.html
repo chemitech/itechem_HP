@@ -209,8 +209,6 @@
                                 body: JSON.stringify(jsonData)
                             })
                             .then(response => {
-                            // メッセージを表示
-                            document.getElementById("status").textContent = "注文を受け付けました！";
 
                             // フォームをクリア
                             document.getElementById("orderForm").reset();
@@ -225,14 +223,6 @@
                             submitButton.textContent = "注文する";
                             
                             })
-
-                            .then(data => {
-                                document.getElementById("status").textContent = "注文を受け付けました！";
-                            })
-
-                            .catch(error => {
-                                document.getElementById("status").textContent = "エラーが発生しました";
-                            });
                         });
                     </script>
                 </div>
