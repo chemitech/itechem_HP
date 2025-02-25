@@ -219,14 +219,17 @@
                             submitButton.textContent = "注文する";
 
                             // モーダルを表示（オプション）
-                            alert("注文を受け付けました！");         
+                            alert("注文を受け付けました！");
+                            
+                            // 送信ボタンのテキストを変更（注文する）
+                            submitButton.textContent = "注文する";
                             
                             })
 
                             .then(data => {
                                 document.getElementById("status").textContent = "注文を受け付けました！";
                             })
-                            
+
                             .catch(error => {
                                 document.getElementById("status").textContent = "エラーが発生しました";
                             });
