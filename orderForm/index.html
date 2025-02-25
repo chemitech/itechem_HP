@@ -174,6 +174,11 @@
 
                         <br>
 
+                        <label><b>注文個数</b></label><br>
+                        <input type="number" name="quantity" min="1" value="1" required><br>
+
+                        <br>
+
                         <label><b>支払い方法</b></label><br>
                         <select name="payment" style="border: 1px solid black; font-size: large; font-weight: bold;">
                           <option value="銀行振込">銀行振込</option>
@@ -202,7 +207,7 @@
                             let submitButton = document.querySelector("button[type='submit']");
                             submitButton.textContent = "送信中...";
 
-                            fetch("https://script.google.com/macros/s/AKfycbx8bEJTg62KTM6IboBG7BGtEV8jKMHFVYKGPUtEcNO12PzAdcdfMRmdGUxmQL8_HYBG/exec", {
+                            fetch("https://script.google.com/macros/s/AKfycbyu1Kpf0U1w1AQcOcP7gZivXGfUGg2WOodlkW9caro6KUY1illRsDmptOtzKzWrswno/exec", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(jsonData)
