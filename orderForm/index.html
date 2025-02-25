@@ -207,8 +207,9 @@
                             let submitButton = document.querySelector("button[type='submit']");
                             submitButton.textContent = "送信中...";
 
-                            fetch("https://script.google.com/macros/s/AKfycbxCBo1H3NdRKdxzP6yATYC7vRFl-d2iRAuQHLnHhT3OJ84dQjLcsC28lFyQvmtNqbqg/exec", {
+                            fetch("https://script.google.com/macros/s/AKfycbwnCdzfF5IuYsnndg9eVCfZfUjZLB8WRPBp3FSSpM9L30d9abNRckpUr1HBwg95lbj4/exec", {
                                 method: "POST",
+                                mode: "cors",  // ✅ CORSを許可
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({
                                     name: document.querySelector("input[name='name']").value,
