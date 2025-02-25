@@ -210,8 +210,16 @@
                             fetch("https://script.google.com/macros/s/AKfycbxCBo1H3NdRKdxzP6yATYC7vRFl-d2iRAuQHLnHhT3OJ84dQjLcsC28lFyQvmtNqbqg/exec", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(jsonData)
+                                body: JSON.stringify({
+                                    name: document.querySelector("input[name='name']").value,
+                                    email: document.querySelector("input[name='email']").value,
+                                    product: document.querySelector("select[name='product']").value,
+                                    quantity: document.querySelector("input[name='quantity']").value,
+                                    payment: document.querySelector("select[name='payment']").value,
+                                    note: document.querySelector("textarea[name='note']").value
+                                })
                             })
+
                             .then(response => response.text()) // ✅ レスポンスを適切に処理
                             .then(data => {
                                 // 送信完了後の処理
