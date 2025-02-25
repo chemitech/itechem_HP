@@ -198,8 +198,9 @@
                             let jsonData = {};
                             formData.forEach((value, key) => { jsonData[key] = value; });
                 
-                            fetch("https://script.google.com/macros/s/AKfycbxB27kseuCpD44MuoNsxxMfw1nDYUaTrawUEw6WX9HxFatgC6NvhQy9ivnigSGIXcL4/exec", {
+                            fetch("https://script.google.com/macros/s/AKfycbx8bEJTg62KTM6IboBG7BGtEV8jKMHFVYKGPUtEcNO12PzAdcdfMRmdGUxmQL8_HYBG/exec", {
                                 method: "POST",
+                                mode: "no-cors", // ✅ CORS回避のために追加
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(jsonData)
                             })
