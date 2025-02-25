@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>S-Calc - Windows向け高機能関数電卓ソフト ｜ ニュース</title>
+        <title>S-Calc - Windows向け高機能関数電卓ソフト ｜ 注文フォーム</title>
         <meta name="description" content="S-CalcはWindows向けの高機能関数電卓ソフト。カスタム関数・定数の登録と共有が可能で、エンジニア・研究者向けに最適。試用版を無料配布中。" />
         <meta name="robots" content="index, follow">
         <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
@@ -54,7 +54,7 @@
                 color: white;
                 text-align: left; /* 明示的に左寄せ */
                 flex-shrink: 0; /* ロゴが伸縮しないようにする */
-                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */ 
                 line-height: 1.4; /* 行間を広げる */
                 
                 /* 折り返しを許可 */
@@ -108,6 +108,14 @@
                 line-height: 20px;
                 font-size: x-large;
             }
+            input {
+                background: white;
+                border: 1px solid black;
+                color: black;
+                font-weight: bold;
+                font-size: large;
+                padding: 5px;
+            }
             footer {
                 background-color: #f0f0f0; /* 薄いグレー */
                 text-align: center; /* 中央寄せ */
@@ -123,7 +131,7 @@
 
             footer a:hover {
                 text-decoration: underline; /* ホバー時に下線 */
-            }        
+            }
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
     </head>
@@ -135,52 +143,81 @@
             <nav class="menu">
                 <a href="../" class="link">Top</a>
                 <a href="../product/" class="link">Product</a>
-                <a class="now" class="link">News</a>
-                <a href="../contact/" class="link">Contact</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../Contact/" class="link">Contact</a>
             </nav>
         </header>
         <div>
             <div class="main">
                 <div class="main_content">
-                    <h2>News</h2>
-                
-                    <h3>販売方式の固定化（2025年2月24日）</h3>
-                    <p>
-                        私が開発したWindows向け関数電卓ソフトをMicrosoft Storeで販売するという話ですが、<br>
-                        Microsoft Storeで使用しようと考えていたDLリンクの第三者によるダウンロード実績が無いことで頓挫してしまいました。<br>
-                        ですので、しばらくは当HPからのご注文のみを承る形としたいと考えております。<br>
+                    
+                    <h1>ご注文フォーム</h1>
+
+                    <h2><strong>Order Form</strong></h2>
+
+                    <form action="submit.php" method="post">
+                        <label><b>名前</b></label><br>
+                        <input type="text" name="name" required><br>
+
                         <br>
-                        当ページから遷移することが出来る購入フォームは以下となります。(Googleフォームを利用しております。)<br>
-                        <a href="../orderForm/" target="_blank">購入フォームはこちら</a><br>
-                        皆様のご注文をお待ちしております。
-                    </p>
 
-                    <p><b>--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---</b></p>
+                        <label><b>メールアドレス</b></label><br>
+                        <input type="email" name="email" required><br>
 
-                    <h3>S-Calcの紹介動画を公開しました（2025年2月20日）</h3>
-                    <p>
-                        高機能関数電卓ソフト「S-Calc」の紹介動画をYouTubeに投稿しました。<br>
-                        この動画では、S-Calcの基本機能やカスタム関数、定数機能について詳しく解説しています。<br>
-                        ぜひご覧ください！
-                    </p>
+                        <br>
+
+                        <label><b>購入商品</b></label><br>
+                        <select name="product" style="border: 1px solid black; font-size: large; font-weight: bold;">
+                            <option value="S-Calc 製品版">S-Calc 製品版</option>
+                            <option value="S-Calc 体験版">S-Calc 体験版</option>
+                        </select><br>
+
+                        <br>
+
+                        <label><b>支払い方法</b></label><br>
+                        <select name="payment" style="border: 1px solid black; font-size: large; font-weight: bold;">
+                          <option value="銀行振込">銀行振込</option>
+                          <!--<option value="クレジットカード">クレジットカード（今後対応予定）</option>-->
+                        </select><br>
+                      
+                        <br>
+                        
+                        <label><b>備考</b></label><br>
+                        <textarea name="note" style="border: 1px solid black; width: 500px; height: 150px;"></textarea><br>
+                      
+                        <br>
+                        
+                        <button type="submit" style="border: 1px solid black;">注文する</button>
+                      </form>
+
+                      <script>
+                        document.getElementById("orderForm").addEventListener("submit", function(event) {
+                            event.preventDefault(); // フォームのデフォルト送信を防ぐ
                 
-                    <!-- YouTube動画埋め込み -->
-                    <div style="text-align: center; margin: 20px 0;">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/NYnUeTrWPuY" 
-                                title="S-Calc 紹介動画" frameborder="0" allowfullscreen>
-                        </iframe>
-                    </div>
+                            let formData = new FormData(this);
+                            let jsonData = {};
+                            formData.forEach((value, key) => { jsonData[key] = value; });
                 
-                    <p>
-                        📌 YouTubeで動画を見る →  
-                        <a href="https://www.youtube.com/watch?v=NYnUeTrWPuY" target="_blank">こちらをクリック</a>
-                    </p>
+                            fetch("https://script.google.com/macros/s/AKfycbxB27kseuCpD44MuoNsxxMfw1nDYUaTrawUEw6WX9HxFatgC6NvhQy9ivnigSGIXcL4/exec", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(jsonData)
+                            })
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById("status").textContent = "注文を受け付けました！";
+                            })
+                            .catch(error => {
+                                document.getElementById("status").textContent = "エラーが発生しました";
+                            });
+                        });
+                    </script>
                 </div>
-                            </div>
+            </div>
         </div>
         <footer>
             <p>© 2025 岡野 翔. All rights reserved.</p>
-            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+            <p><a href="../contact/">お問い合わせ</label> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
         </footer>
     </body>
 </html>
