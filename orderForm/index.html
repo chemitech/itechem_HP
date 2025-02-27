@@ -207,7 +207,7 @@
                             let submitButton = document.querySelector("button[type='submit']");
                             submitButton.textContent = "送信中...";
 
-                            fetch("https://script.google.com/macros/s/AKfycbw-IA2vQ294ChziUJFXFCEXfXAETXlbJDXCENiygwAvW5OXpvWAzbBuFYJFCjmuBFGv/exec", {
+                            fetch("https://i6u47isa2pkoxhna3jjwo7wjwy0hvibn.lambda-url.ap-northeast-1.on.aws/", {
                                 method: "POST",
                                 mode: "cors",  // ✅ CORSを許可
                                 headers: { "Content-Type": "application/json" },
@@ -230,6 +230,7 @@
                             })
                             .catch(error => {
                                 alert("エラーが発生しました。もう一度お試しください。");
+                                console.error(error);
                                 submitButton.textContent = "注文する";
                             });
                         });
