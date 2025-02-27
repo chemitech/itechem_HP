@@ -224,7 +224,7 @@
                             .then(response => 
                             {
                                 console.log("Response Status:",response.status);
-                                response.text()
+                                return response.json();
                             }) // ✅ レスポンスを適切に処理
                             .then(data => {
                                 console.log("Response Data:",data);
