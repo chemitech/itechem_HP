@@ -221,12 +221,21 @@
                                 })
                             })
 
-                            .then(response => response.text()) // ✅ レスポンスを適切に処理
+                            .then(response => 
+                            {
+                                console.log("Response Status:",response.status);
+                                response.text()
+                            }) // ✅ レスポンスを適切に処理
                             .then(data => {
+                                console.log("Response Data:",data);
+                                if(data.message){
                                 // 送信完了後の処理
                                 alert("注文を受け付けました！"); // ✅ アラート表示
                                 document.getElementById("orderForm").reset(); // ✅ フォームをクリア
                                 submitButton.textContent = "注文する"; // ✅ ボタンのテキストを戻す
+                                }else{
+                                    throw new Error("Unexpected response");
+                                }
                             })
                             .catch(error => {
                                 alert("エラーが発生しました。もう一度お試しください。");
