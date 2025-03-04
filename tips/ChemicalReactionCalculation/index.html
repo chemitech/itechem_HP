@@ -230,6 +230,36 @@
             <div class="main">
                 <div class="main_content">
                     <h2>S-Calc 化学反応計算の応用</h2>
+                    <h3>反応量・生成量の計算（化学量論）</h3>
+                    <h4>10.0gのメタン（CH<sub>4</sub>）を完全燃焼させるとき、二酸化炭素が何g生成されるか？</h4>
+                    <h4>反応式：</h4>
+                    CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O
+
+                    <h4>解法：</h4>
+                    <ol>
+                        <li><h4>[C:12.011g/mol]と[H:1.008g/mol]からメタンのモル質量を求める。</h4></li>
+                        12.011 + 1.008 × 4 = 16.043 g/mol
+                        <br>
+                        <li><h4>１で算出したモル質量を物質量（mol）に変換。</h4></li>
+                        10 g ÷ 16.043 g/mol = 0.623 mol
+                        <br>
+                        <li><h4>発生する二酸化炭素の物質量は反応式から読み取れる反応比より</h4></li>
+                        反応前のメタンの物質量：0.623 mol
+                        <br>
+                        反応後の二酸化炭素の物質量：0.623 mol 
+                        <br>
+                        <li><h4>二酸化炭素の質量を求める。</h4></li>
+                        二酸化炭素のモル質量 = 2 × 15.999 + 12.011 = 44.00900 g/mol
+                        <br>
+                        二酸化炭素の物質量 = 0.623 mol より、
+                        <br>
+                        44.00900 g/mol × 0.623 mol = 27.4 g
+                    </ol>
+                    <br>
+                    <b>これを「S-Calc」で算出する。</b>
+                    <img src="./image/chemicalReactionCalc01.png" alt="二酸化炭素生成量の算出" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
+                    <br>
+                    段階を踏んで計算を行った解とS-Calcの解に若干の差はあるが、おおよそ許容することが出来るものである。
 
                 </div>
             </div>
