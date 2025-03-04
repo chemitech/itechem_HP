@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc - Windows向け高機能関数電卓ソフト ｜ ルーチン計算を時短する方法</title>
+        <meta name="description" content="S-CalcはWindows向けの高機能関数電卓ソフト。カスタム関数・定数の登録と共有が可能で、エンジニア・研究者向けに最適。試用版を無料配布中。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            label{
+                display: block;
+                text-align: center;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e\ \(1\).webp');
+                background-color: rgba(255, 255, 255, 0.9); /* 透明度を加えて見やすくする */
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */ 
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .slider-container {
+                position: relative;
+                max-width: 100%;
+                margin: auto;
+                text-align: center;
+                overflow: auto;
+                width: 100%;
+                display: flex;
+                justify-content: center; /* 中央寄せ */
+                align-items: center; /* 垂直方向の中央寄せ */
+            }
+
+            .slider {
+                display: flex;
+                overflow: hidden;
+                width: 600px;
+                height: 350px;
+            }
+
+            .slide {
+                display: none;
+                width: 100%;
+                height: auto;
+            }
+
+            .prev-btn, .next-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            .prev-btn { left: 0; }
+            .next-btn { right: 0; }
+
+            .caption {
+                margin-top: 10px;
+                font-size: 1.2em;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                object-fit: contain;
+            }
+            /* タブのスタイル */
+            .tab-container {
+                display: flex;
+                border-bottom: 2px solid #ccc;
+                margin-bottom: 10px;
+            }
+            .tab {
+                padding: 10px 20px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                background: #f4f4f4;
+                font-weight: bold;
+            }
+            .tab.active {
+                background: #fff;
+                border-top: 2px solid #007bff;
+                border-left: 2px solid #007bff;
+                border-right: 2px solid #007bff;
+            }
+            /* コンテンツのスタイル */
+            .tab-content {
+                display: none;
+                padding: 20px;
+                border: 2px solid #ccc;
+                background: #fff;
+            }
+            .tab-content.active {
+                display: block;
+            }
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                itechem（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../../product/" class="link">Product</a>
+                <a href="../../news/" class="link">News</a>
+                <a class="../tips/">Tips & Tricks</a>
+                <a href="../../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>S-Calc ルーチン計算を時短する方法</h2>
+
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 岡野 翔. All rights reserved.</p>
+            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+        </footer>
+    </body>
+</html>
