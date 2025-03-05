@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc - Windows向け高機能関数電卓ソフト ｜ ニュース</title>
+        <meta name="description" content="私の事業の中でのニュースを記載しております。現在はWindows向け高機能関数電卓「S-Calc」についてのニュースがメインとなっております。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e\ \(1\).webp');
+                background-color: rgba(255, 255, 255, 0.9); /* 透明度を加えて見やすくする */
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }        
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                itechem（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../product/" class="link">Product</a>
+                <a class="now" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>Development</h2>
+                    <h3>
+                        あなたの業務、もっと効率化しませんか？
+                    </h3>
+
+                    <p>私は、<b>業務用Windowsソフト開発（WPF）</b>と、<b>ホームページ制作</b>を承っています。</p>
+                    <li>
+                        業務の自動化・データ管理が出来るWPFソフト開発
+                    </li>
+                    <li>
+                        事業のオンライン展開を支援する 静的ホームページ制作
+                    </li>
+
+                    <h3>案件例</h3>
+
+                    <h4 style="padding-left: 1em;">1.WPF（Windows Presentation Foundation）を使った業務ソフト開発</h4>
+                    <b style="padding-left: 2em;">個人事業主・企業向けの業務効率化を目的としたWindowsソフトの開発を承ります。</b>
+                    <br>
+                    <b style="padding-left: 2em;">業務の自動化・データ管理をスムーズにし、作業負担を軽減するソフトを提供いたします。</b>
+                    <br>
+                    <br>
+                    <b style="padding-left: 2em;">開発可能なソフト例</b>
+                    <br>
+                    <br>
+                    <b style="padding-left: 2em;">１．帳票作成・管理ソフト</b>
+                    <br>
+                    <li style="padding-left: 3em;"><b>概要：</b>請求書や報告書などの帳票を作成・管理し、Excelエクスポートに対応。</li>
+                    <li style="padding-left: 3em;"><b>主な機能：</b></li>
+                    <li style="padding-left: 5em;">帳票の一覧表示・検索機能（DataGridを使用）</li>
+                    <li style="padding-left: 5em;">帳票作成・編集・削除機能</li>
+                    <li style="padding-left: 5em;">帳票のプレビュー表示（印刷イメージの確認）</li>
+                    <li style="padding-left: 5em;"><b>PDF・Excelエクスポート機能</b></li>
+                    <li style="padding-left: 5em;"><b>利用想定：</b>営業報告書、会計帳票、請求書の作成など</li>
+                    <ul>
+                        <b style="color: red;">現在、サンプル画面を準備中です。近日中に公開予定！</b>
+                        <!--<img src="image/">-->
+                        <!--<img src="image/">-->
+                    </ul>
+                    <b style="padding-left: 2em;">２．データ管理ソフト</b>
+                    <br>
+                    <li style="padding-left: 3em;"><b>概要：</b>在庫管理、顧客データ、研究データなどをデジタル化し、検索・管理を効率化。</li>
+                    <li style="padding-left: 3em;"><b>主な機能：</b></li>
+                    <li style="padding-left: 5em;"><b>データの一覧表示（DataGridを使用）</b></li>
+                    <li style="padding-left: 5em;"><b>検索・フィルタリング機能</b></li>
+                    <li style="padding-left: 5em;"><b>データの新規登録・編集・削除</b></li>
+                    <li style="padding-left: 5em;"><b>CSV/Excelのインポート・エクスポート</b></li>
+                    <li style="padding-left: 5em;"><b>データの履歴管理</b></li>
+                    <li style="padding-left: 3em;"><b>利用想定：</b>商品在庫管理、顧客情報管理、設備管理システム</li>
+                    <ul>
+                        <b style="color: red;">現在、サンプル画面を準備中です。近日中に公開予定！</b>
+                        <!--<img src="image/">-->
+                        <!--<img src="image/">-->
+                    </ul>
+                    <h4 style="padding-left: 1em;">2.静的ホームページの開発・保守</h4>
+                    <b style="padding-left: 2em;">個人事業主・中小企業向けに、シンプルで管理しやすい静的サイトを提供します。</b>
+                    <br>
+                    <b style="padding-left: 2em;">スマホ対応・SEO対策を考慮し、事業のオンラインプレゼンスを向上させます。</b>
+                    <br>
+                    <br>
+                    <b style="padding-left: 2em;">制作可能なサイト例</b>
+                    <br>
+                    <br>
+                    <b style="padding-left: 2em;">１．企業ホームページ</b>
+                    <br>
+                    <li style="padding-left: 3em;"><b>概要：</b>会社概要・サービス紹介・問い合わせフォーム付の基本的な企業HP。</li>
+                    <li style="padding-left: 3em;"><b>主な構成：</b></li>
+                    <li style="padding-left: 5em;">トップページ（事業内容の紹介）</li>
+                    <li style="padding-left: 5em;">会社概要・サービスページ</li>
+                    <li style="padding-left: 5em;"><b>お問い合わせフォーム（相談可能）</b></li>
+                    <li style="padding-left: 5em;"><b>レスポンシブ対応（PC・スマホ）</b></li>
+                    <li style="padding-left: 3em;"><b>利用想定：</b>中小企業、個人事業主、士業</li>
+                    <br>
+                    <b style="padding-left: 2em;">２．ランディングページ</b>
+                    <br>
+                    <li style="padding-left: 3em;"><b>概要：</b>特定のサービスや商品の販促用の1ページ構成のサイト</li>
+                    <li style="padding-left: 3em;"><b>主な構成：</b></li>
+                    <li style="padding-left: 5em;">商品・サービスの詳細説明</li>
+                    <li style="padding-left: 5em;">ユーザの声・導入事例</li>
+                    <li style="padding-left: 5em;">CTA（Call To Action：問い合わせボタン・申し込みフォーム）</li>
+                    <li style="padding-left: 3em;"><b>利用想定：</b>新商品の販売促進、イベントの案内ページ</li>
+                    <br>
+                    <b style="padding-left: 2em;">３．個人・店舗向けサイト</b>
+                    <br>
+                    <li style="padding-left: 3em;"><b>概要：</b>飲食店・美容院・クリニックなど、ローカルビジネス向けのサイト</li>
+                    <li style="padding-left: 3em;"><b>主な構成：</b></li>
+                    <li style="padding-left: 5em;">営業時間・メニュー・予約案内ページ</li>
+                    <li style="padding-left: 5em;">SNSリンク設置</li>
+                    <li style="padding-left: 5em;">Googleマップ埋込</li>
+                    <li style="padding-left: 3em;"><b>利用想定：</b>個人経営の店舗、ローカルビジネス</li>
+                    <br>
+                    <b>サポート内容</b>
+                    <li style="padding-left: 2em;"><b>制作のみ or 制作 ＋ 管理（月額 10,000～）</b></li>
+                    <li style="padding-left: 2em;"><b>サイトの定期メンテナンス対応（オプション）</b></li>
+                    <li style="padding-left: 2em;"><b>既存サイトの改修・リニューアル対応</b></li>
+                    <br>
+                    <b>問い合わせについて</b>
+                    <li style="padding-left: 2em;"><b>Windowsソフト開発：単月80万円～</b>（案件の規模により変動）</li>
+                    <b style="padding-left: 3.5em">ヒアリングを行い、ご予算に合わせた最適なプランをご提案いたします。</b>
+                    <li style="padding-left: 2em;"><b>静的ホームページ制作：案件ごとにお見積り（要相談）</b></li>
+                    <li style="padding-left: 2em;"><b>まずはヒアリングのうえ、最適なプランをご提案いたします。</b></li>
+                    <li style="padding-left: 2em;"><b><a href="https://docs.google.com/forms/d/1igYveNNuODvIT01zWS1NMyxlre7cnzeGjbQP8Mcl3m0" target="_blank">お問い合わせフォームはこちらをクリック</a>                    </b></li>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 岡野 翔. All rights reserved.</p>
+            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+        </footer>
+    </body>
+</html>
