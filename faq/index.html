@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc | Windows向け高機能関数電卓 - カスタム関数・定数対応</title>
+        <meta name="description" content="S-CalcはWindows向けの高機能関数電卓ソフト。S-Calcの導入方法や利用方法についてのFAQを記載している。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <link rel="canonical" href="https://itechem.jp/faq/">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            .emailInput {
+                background: transparent;
+                border: 0px solid white;
+                color: black;
+                font-weight: bold;
+                font-size: large;
+                padding: 5px;
+            }
+            /* タブのスタイル */
+            .tab-container {
+                display: flex;
+                border-bottom: 2px solid #ccc;
+                margin-bottom: 10px;
+            }
+            .tab {
+                padding: 10px 20px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                background: #f4f4f4;
+                font-weight: bold;
+            }
+            .tab.active {
+                background: #fff;
+                border-top: 2px solid #007bff;
+                border-left: 2px solid #007bff;
+                border-right: 2px solid #007bff;
+            }
+            /* コンテンツのスタイル */
+            .tab-content {
+                display: none;
+                padding: 20px;
+                border: 2px solid #ccc;
+                background: #fff;
+            }
+            .tab-content.active {
+                display: block;
+            }
+            .faq-container { width: 80%; margin: auto; }
+            .faq-tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+            .faq-tab { padding: 10px; cursor: pointer; border: 1px solid #ccc; background: #f4f4f4; }
+            .faq-tab.active { background: #ddd; font-weight: bold; }
+            .faq-content { display: none; padding: 10px; border: 1px solid #ccc; background: #fff; }
+            .faq-content.active { display: block; }
+            .faq-item { border-bottom: 1px solid #ccc; padding: 10px 0; cursor: pointer; }
+            .faq-answer { display: none; padding: 5px; background: #f9f9f9; margin-top: 5px; }
+            .faq-answer.active { display: block; }
+            .highlight { background: yellow; font-weight: bold; }
+            .search-box { margin-bottom: 10px; }
+            .search-box input { width: 200px; padding: 5px; }
+            .search-results { margin-top: 10px; }
+            .nav-buttons { margin-top: 5px; }
+            .hidden { display: none; }
+            /* 追加: Q(質問)部分にカーソルを合わせると文字色を青に変更 */
+            .faq-item strong:hover {
+                color: blue;
+            }
+            .faq-item.active strong {
+                color: red; /* クリックされたQの文字色を赤に変更 */
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }        
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                岡野 翔（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../product/" class="link">Product</a>
+                <a href="../development/" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a class="now">FAQ</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>S-Calc よくある質問</h2>
+
+                    <!-- タブのボタン -->
+                    <div class="tab-container">
+                        <div class="tab active" onclick="showTab('install')">インストール</div>
+                        <div class="tab" onclick="showTab('function')">機能</div>
+                        <div class="tab" onclick="showTab('purchase')">購入</div>
+                    </div>
+                    
+                    <!-- タブのコンテンツ -->
+                    <div id="install" class="tab-content active">
+                        <h3>インストール関連</h3>
+                        <div class="faq-item" onclick="toggleAnswer('faq1', this);">
+                            <strong>Q: S-Calcのインストール方法は？</strong>
+                            <div id="faq1" class="faq-answer" style="padding-left: 20px;">A: S-Calcのインストール手順は公式サイトからダウンロードし、インストーラーを実行してください。</div>
+                        </div>
+                        <div class="faq-item" onclick="toggleAnswer('faq2', this)">
+                            <strong>Q: S-Calcの対応OSは？</strong>
+                            <div id="faq2" class="faq-answer" style="padding-left: 20px;">A: Windows 10, Windows 11に対応しています。</div>
+                        </div>
+                    </div>
+                    
+                    <div id="function" class="tab-content">
+                        <h3>機能について</h3>
+                        <div class="faq-item" onclick="toggleAnswer('faq3', this)">
+                            <strong>Q: カスタム関数の使い方は？</strong>
+                            <div id="faq3" class="faq-answer" style="padding-left: 20px;">
+                                A: S-Calcではカスタム関数を登録し、簡単に呼び出すことができます。
+                            </div>
+                        </div>
+                        <div class="faq-item" onclick="toggleAnswer('faq4', this)">
+                            <strong>Q: 計算履歴はどのように使えますか？</strong>
+                            <div id="faq4" class="faq-answer" style="padding-left: 20px;">
+                                A: 計算履歴は自動保存され、後から再利用可能です。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="purchase" class="tab-content">
+                        <h3>購入に関する質問</h3>
+                        <div class="faq-item" onclick="toggleAnswer('faq5', this)">
+                            <strong>Q: S-Calcの価格はいくらですか？</strong>
+                            <div id="faq5" class="faq-answer" style="padding-left: 20px;">A: 価格は8,800円です。</div>
+                        </div>
+                        <div class="faq-item" onclick="toggleAnswer('faq6', this)">
+                            <strong>Q: 支払い方法は？</strong>
+                            <div id="faq6" class="faq-answer" style="padding-left: 20px;">A: 銀行振り込みにのみ対応しております。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 岡野 翔. All rights reserved.</p>
+            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+        </footer>
+    </body>
+    <script>
+        if (window.location.pathname === "/index.html") {
+            window.location.replace("https://itechem.jp/");
+        }
+        function openRelevantTab(selectedFAQ) {
+            Object.keys(faqData).forEach(tab => {
+                if (faqData[tab].includes(selectedFAQ)) {
+                    openTab(null, tab);
+                }
+            });
+        }
+
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.faq-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.faq-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
+        }
+
+        function toggleAnswer(id, element) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle("active");
+            element.classList.toggle("active"); // クリックされた `faq-item` に `active` を付与/削除
+        }
+
+        function showTab(tabId) {
+                            // 全てのタブを非アクティブにする
+                            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                            // クリックされたタブとコンテンツをアクティブにする
+                            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+                            document.getElementById(tabId).classList.add('active');
+                        }
+    </script>
+</html>
