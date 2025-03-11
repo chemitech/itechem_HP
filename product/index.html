@@ -184,6 +184,13 @@
                 width: 100%;
                 object-fit: contain;
             }
+            .section-title {
+                font-size: 26px;  /* h2より少し大きめ */
+                font-weight: bold;
+                color: #000;
+                margin-bottom: 10px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+            }
 
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
@@ -207,8 +214,8 @@
         <div>
             <div class="main">
                 <div class="main_content">
-                    <h2>Product</h2>
-                    <h3>高度な計算をもっと効率的に。</h3>
+                    <p class="section-title">Product</p>
+                    <h2>高度な計算をもっと効率的に。</h2>
 
                     <p>研究・開発・技術計算の現場では、<b>関数電卓の精度と柔軟性が求められます。</b></p>
                     <p>しかし、市販の関数電卓では<b>カスタム関数を自由に登録できない</b>など、<b>計算業務をスムーズに進めるのが難しい</b>ことがあります。</p>
@@ -238,7 +245,7 @@
                     <p class="caption" id="slider-caption"></p>
                     <script src="script/slideImage.js"></script>
 
-                    <h3>1.主要機能の概要</h3>
+                    <h2>1.主要機能の概要</h2>
                     <b>S-Calcの基本的なコンセプト</b>
                     <p>S-Calcを開発した経緯としまして、工業高校化学科、理系4大化学科を卒業した私がシステムエンジニアとして業務をしている際、</p>
                     <p>WindowsPCで使える使いやすい関数電卓ソフトは無いかと考えたことがことの発端となっております。</p>
@@ -248,27 +255,69 @@
                     <p>ですので、「S-Calc」はグループでの作業に向いているWindows向け関数電卓ソフトとなっております。</p>
                     <p>「S-Calc」は研究者の方や技術者の方、エンジニアの方に向いているソフトであると考えています。</p>
 
-                    <h3>2.具体的な機能</h3>
-                    <h4>カスタム関数</h4>
+                    <h2>2.具体的な機能</h2>
+                    <h3>カスタム関数</h3>
                     <p>ユーザ定義の数式を登録・活用することが出来る機能。</p>
                     <img src="image/slide02.png" alt="ユーザ定義" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
-                    <h4>計算履歴</h4>
+                    <h3>計算履歴</h3>
                     <p>過去の計算を参照。式、解の再利用可。</p>
                     <img src="image/slide01.png" alt="計算履歴" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
-                    <h4>定数機能</h4>
+                    <h3>定数機能</h3>
                     <p>よく使う定数を保存・呼び出しすることが出来る機能。</p>
                     <img src="image/slide04.png" alt="定数呼び出し" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
-                    <h4>周期表機能</h4>
+                    <h3>周期表機能</h3>
                     <p>現在IUPACが定めている最新周期表に準拠した元素データを搭載し、そのデータを計算に使用することが出来る機能。</p>
                     <img src="image/PeriodicTableWindow.png" alt="周期表利用" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
                     </p>
 
-                    <h3>3.活用例</h3>
+                    <h2>3.活用例</h2>
                     <img src="image/calcEx.png" alt="活用例" style="width:700px; height:auto; display: block; margin: 0; filter: brightness(80%);">
                     <p>0℃、1気圧、1molの気体の体積が22.4Lであることは、化学を学んだ方なら一度は目にしたことがあるでしょう。</p>
                     <p>理想気体の状態方程式（PV=nRT）の式をVについての式に変形して、22.4Lとなることを確認しました。</p>
 
-                    <h3>4.購入リンク</h3>
+                    <h2>4. なぜS-Calc？ 他ツールとの違い</h2>
+                    <p>S-Calcは、Windows標準の電卓やExcelと比べて、より直感的で高機能な計算をサポートします。</p>
+                    
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">機能</th>
+                            <th style="padding: 12px; border: 1px solid #999;">S-Calc</th>
+                            <th style="padding: 12px; border: 1px solid #999;">Windows標準電卓</th>
+                            <th style="padding: 12px; border: 1px solid #999;">Excel</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">履歴保存</td>
+                            <td style="padding: 12px; border: 1px solid #999;">◯</td>
+                            <td style="padding: 12px; border: 1px solid #999;">×</td>
+                            <td style="padding: 12px; border: 1px solid #999;">△（手動管理）</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">カスタム関数登録</td>
+                            <td style="padding: 12px; border: 1px solid #999;">◯</td>
+                            <td style="padding: 12px; border: 1px solid #999;">×</td>
+                            <td style="padding: 12px; border: 1px solid #999;">△（マクロ・関数を使用）</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">定数の管理</td>
+                            <td style="padding: 12px; border: 1px solid #999;">◯</td>
+                            <td style="padding: 12px; border: 1px solid #999;">×</td>
+                            <td style="padding: 12px; border: 1px solid #999;">△（名前付きセル）</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">シンプルなUI</td>
+                            <td style="padding: 12px; border: 1px solid #999;">◯</td>
+                            <td style="padding: 12px; border: 1px solid #999;">◯（ボタン数が少なく直感的）</td>
+                            <td style="padding: 12px; border: 1px solid #999;">△（表計算向け）</td>
+                        </tr>
+                    </table>
+                                        
+                    <p>Excelは表計算やデータ管理に優れていますが、関数電卓としては計算履歴や関数の直感的な入力には向いていません。</p>
+                    <p>S-Calcは計算に特化しているため、数値計算をスムーズに行えます。</p>
+                    <p>Excelは表計算に適しており、大量のデータを管理できます。</p>
+                    <p>一方で、S-Calcは数式の入力や計算履歴の管理が得意です。用途に応じて使い分けることで、より効率的な作業が可能になります。</p>
+                    
+
+                    <h2>5.購入リンク</h2>
                     <a href="../orderForm/" target="_blank" style="margin-left: 20px;">購入リンクはこちら</a>
                     <p>※試用版（機能制限版）は「計算履歴」「カスタム関数」「定数」の機能を除いた、計算部分のみのご提供となります。</p>
                 </div>
