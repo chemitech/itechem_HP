@@ -22,6 +22,12 @@
     <priority>0.7</priority>
   </url>
 
+    <url>
+    <loc>https://itechem.jp/scalc/</loc>
+    <lastmod>2025-03-17</lastmod>
+    <priority>1.0</priority>
+  </url>
+
   <!-- newsページ -->
   <url>
     <loc>https://itechem.jp/news/</loc>
