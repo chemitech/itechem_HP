@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc｜Windows関数電卓｜計算履歴・カスタム関数搭載｜科学研究・エンジニアリング対応</title>
+        <meta name="description" content="Windows向けの高機能関数電卓「S-Calc」。科学研究、エンジニアリング、教育などの計算を効率化！カスタム関数・計算履歴機能を搭載し、Excelの代替としても最適。試用版あり！">
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <meta name="author" content="岡野 翔">
+        <link rel="canonical" href="https://itechem.jp/news/">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }
+            iframe{
+                max-width: 100%;
+            }
+     
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>岡野 翔（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発</h1>
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a class="now" class="link">S-Calc</a>
+                <a href="../product/" class="link">Product</a>
+                <a href="../development/" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a href="../faq/" class="link">FAQ</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>S-Calcの活用シーン</h2>
+
+                    <h3>科学研究でのS-Calc活用</h3>
+
+                    <p>科学研究において、計算の精度と効率は研究成果を大きく左右します。</p>
+                    <p>S-Calcは、化学・物理・生物学などの研究者にとって、より正確で高速な計算を支援する高機能関数電卓です。</p>
+                    <p>実験データの解析や公式計算をスムーズに行い、<b>計算ミスを削減</b>し、作業時間を短縮できます。</p>
+
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">研究分野</th>
+                            <th style="padding: 12px; border: 1px solid #999;">使用用途</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">化学研究</td>
+                            <td style="padding: 12px; border: 1px solid #999;">濃度計算、反応速度解析、pH計算</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">物理研究</td>
+                            <td style="padding: 12px; border: 1px solid #999;">力学計算、電磁気学の数値計算、流体力学シミュレーション</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">生物統計</td>
+                            <td style="padding: 12px; border: 1px solid #999;">統計解析、標本サイズ計算、生存分析</td>
+                        </tr>
+                    </table>
+
+                    <h3>エンジニアリング分野での利用</h3>
+
+                    <p>エンジニアが日常的に扱う計算は、複雑で時間がかかるものが多くあります</p>
+                    <p>S-Calcは、エンジニアリング向けの<b>カスタム関数機能</b>や<b>計算履歴機能</b>を活用し、機械設計・電子回路設計・建築構造計算などの作業を効率化します。</p>
+
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">エンジニアリング分野</th>
+                            <th style="padding: 12px; border: 1px solid #999;">計算用途</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">機械設計</td>
+                            <td style="padding: 12px; border: 1px solid #999;">材料応力、モーメント計算、回転体の慣性計算</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">電子回路設計</td>
+                            <td style="padding: 12px; border: 1px solid #999;">抵抗値・コンデンサ容量計算、電流・電圧の解析</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">建築・土木</td>
+                            <td style="padding: 12px; border: 1px solid #999;">耐震計算、梁の応力計算、配筋計算</td>
+                        </tr>
+                    </table>
+
+                    <h3>教育用途（学生・教師向け）</h3>
+
+                    <p>数学・物理・化学を学ぶ学生にとって、関数電卓は欠かせません。S-Calcは、<b>高度な関数計算を可能にするWindows向けの電卓ソフト</b>です。</p>
+                    <p>教師が授業で活用する際にも、<b>履歴機能を使って計算過程を確認できる</b>ため、教育支援ツールとしても最適です。</p>
+
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">学科</th>
+                            <th style="padding: 12px; border: 1px solid #999;">活用例</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">数学</td>
+                            <td style="padding: 12px; border: 1px solid #999;">方程式の解法、関数グラフの解析</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">物理</td>
+                            <td style="padding: 12px; border: 1px solid #999;">運動方程式、電磁波計算</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">化学</td>
+                            <td style="padding: 12px; border: 1px solid #999;">分子量計算、酸塩基平衡</td>
+                        </tr>
+                    </table>
+
+                    <h2>S-Calcの主な特徴</h2>
+
+                    <h3>計算履歴の保存機能</h3>
+
+                    <p>S-Calcでは、<b>過去の計算履歴を保存</b>し、後で簡単に参照・再利用することが可能です。</p>  
+                    <p>この機能により、「以前の計算をやり直したい」「間違いがないか確認したい」といった場面で役立ちます。</p>
+                    
+                    <h3>カスタム関数の登録と活用</h3>
+
+                    <p>エンジニアや研究者が扱う複雑な数式を、<b>カスタム関数として登録</b>できます。</p>  
+                    <p>一度登録すれば、繰り返し利用でき、計算ミスのリスクを減らし、作業効率を向上させます。</p>
+
+                    <h3>物理定数・数学定数の管理</h3>
+
+                    <p>S-Calcでは、<b>物理学・数学でよく使う定数を登録</b>することができます。</p>  
+                    <p>例えば、<b>光速・プランク定数・重力加速度</b>など、頻繁に利用する定数を即座に呼び出せます。</p>
+
+                    <h2>他の関数電卓ソフトとの比較</h2>
+
+                    <h3>Windows標準電卓との違い</h3>
+
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">機能</th>
+                            <th style="padding: 12px; border: 1px solid #999;">S-Calc</th>
+                            <th style="padding: 12px; border: 1px solid #999;">Windows電卓</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">計算履歴</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ <b>保存可能</b></td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ <b>履歴なし</b></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">カスタム関数</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ <b>関数登録・再利用OK</b></td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ <b>関数のカスタマイズ不可</b></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">定数管理</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ <b>登録・共有可能</b></td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ <b>定数の保存なし</b></td>
+                        </tr>
+                    </table>
+
+                    <h2>価格・購入方法</h2>
+
+                    <h3>S-Calcの価格とライセンス形態</h3>
+
+                    <p>S-Calcは<b>8,800円（税込）</b>で提供しております。</p>
+                    <p>また、試用版をご利用いただけるため、購入前に機能を確認できます。</p>
+
+                    <a href="../orderForm/" target="_blank" style="display:inline-block; background:#007bff; color:white; padding:12px 24px; font-size:20px; border-radius:5px; text-decoration:none; font-weight:bold;">
+                        🚀 S-Calc を今すぐ手に入れる！
+                    </a>
+                    
+                    <h3>試用版と製品版の違い</h3>
+
+                    <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 12px; border: 1px solid #999;">機能</th>
+                            <th style="padding: 12px; border: 1px solid #999;">製品版</th>
+                            <th style="padding: 12px; border: 1px solid #999;">試用版</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">計算履歴</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ 利用可能</td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ 利用不可</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">カスタム関数登録</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ 利用可能</td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ 利用不可</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #999;">定数管理</td>
+                            <td style="padding: 12px; border: 1px solid #999;">✅ 利用可能</td>
+                            <td style="padding: 12px; border: 1px solid #999;">❌ 利用不可</td>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2025 岡野 翔. All rights reserved.</p>
+            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+        </footer>
+    </body>
+</html>
