@@ -4,90 +4,90 @@
   <!-- トップページ -->
   <url>
     <loc>https://itechem.jp/</loc>
-    <lastmod>2025-02-28</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- productページ -->
   <url>
     <loc>https://itechem.jp/product/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- 購入フォーム -->
   <url>
     <loc>https://itechem.jp/orderForm/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.7</priority>
   </url>
 
     <url>
     <loc>https://itechem.jp/scalc/</loc>
-    <lastmod>2025-03-17</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- newsページ -->
   <url>
     <loc>https://itechem.jp/news/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <!-- news内の購入フォーム -->
   <url>
     <loc>https://itechem.jp/orderForm/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <!-- contactページ -->
   <url>
     <loc>https://itechem.jp/contact/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/development/</loc>
-    <lastmod>2025-03-05</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/HowToUseCalcHistory/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/MakeToCustom/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/UtilizationOfConstants/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/MolecularWeightCalculation/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://itechem.jp/tips/ChemicalReactionCalculation/</loc>
-    <lastmod>2025-03-04</lastmod>
+    <lastmod>2025-03-18</lastmod>
     <priority>0.6</priority>
   </url>
 
