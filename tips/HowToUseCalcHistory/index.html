@@ -217,6 +217,23 @@
             .tab-content.active {
                 display: block;
             }
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
     </head>
@@ -298,8 +315,15 @@
             </div>
         </div>
         <footer>
-            <p>© 2025 岡野 翔. All rights reserved.</p>
-            <p><a href="/contact/">お問い合わせ</a> | <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
+            <small>© 2025 岡野 翔（おかの かける） - 個人事業主 | Windowsソフト開発 & ホームページ制作</small>
+          
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                  <li><a href="/contact/">岡野 翔へのお問い合わせ</a></li>
+                  <li><a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a></li>
+                  <li><a href="/privacy/">プライバシーポリシー</a></li>
+                </ul>
+              </nav>
         </footer>
     </body>
 </html>
