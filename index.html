@@ -165,7 +165,28 @@
             .dev-button:hover {
                 background-color: #0056b3; /* 少し暗い青 */
             }
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
 
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+            .note {
+                font-size: 0.85rem;
+                color: #444; /* #333～#444 くらいが読みやすい */
+                margin-top: 0.5em;
+                line-height: 1.6;
+            }
 
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
@@ -232,27 +253,36 @@
                     </div>  
 
                     <h3>自己紹介</h3>
-                    <p><strong>代表者:</strong> 岡野 翔（おかの かける）です。Windows向けソフトウェア開発やホームページ制作を行っています。</p>
-                    <p><strong>所在地:</strong> 北海道札幌市</p>
-                    <p><strong>学歴：</strong></p>
+
+                    <h4>代表者</h4>
+                    <p>岡野 翔（おかの かける）です。Windows向けソフトウェア開発やホームページ制作を行っています。</p>
+                    
+                    <h4>所在地</h4>
+                    <p>北海道札幌市</p>
+                    <p class="note">
+                        ※ 業務用オフィス（札幌市内）を契約のうえ事業を行っておりますが、オフィス管理者様へのご配慮のため、所在地の詳細は非公開とさせていただいております。<br>
+                        また、札幌市内や公共交通機関で移動可能な近郊エリアであれば、対面でのお打ち合わせも可能です。お気軽にご相談ください。
+                    </p>
+                                            
+                    <h4>学歴</h4>
                     <ul>
-                        <li>札幌琴似工業高校 環境化学科卒</li>
-                        <li>千歳科学技術大学 バイオ・マテリアル学科卒（現：応用化学生物学科）</li>
+                      <li>札幌琴似工業高校 環境化学科 卒</li>
+                      <li>千歳科学技術大学 バイオ・マテリアル学科 卒（現：応用化学生物学科）</li>
                     </ul>
-                    <p><strong>スキル・開発経験：</strong></p>
+                    
+                    <h4>スキル・開発経験</h4>
                     <ul>
-                        <li>Excel（Excel関数, VBA, マクロ）を用いた業務効率化</li>
-                        <li>.NET (VB,C#) / WPF を用いた業務ソフト開発</li>
-                        <li style="list-style-type: none;">業務効率化のためのExcel自動化ツール開発も可能です。</li>
-                        <li>HTML/CSS/JavaScriptを用いたホームページ制作</li>
-                        <li>データベース管理</li>
-                        <li style="list-style-type: none; word-wrap: break-word;">（Oracle/PostgreSQL/SQLServer/MySQL/SQLite）</li>
+                      <li>Excel（Excel関数, VBA, マクロ）を用いた業務効率化</li>
+                      <li>.NET（VB, C#）/ WPF を用いた業務ソフト開発</li>
+                      <li>業務効率化のための Excel 自動化ツールの開発</li>
+                      <li>HTML / CSS / JavaScript を用いたホームページ制作</li>
+                      <li>データベース管理（Oracle / PostgreSQL / SQL Server / MySQL / SQLite）</li>
                     </ul>
-                
-                    <p class="section-title">開発・技術経歴</p>
-                    <p>過去に神奈川県のシステム開発企業にて、業務管理システムや計算ソフトウェアの開発に従事。 </p>
-                    <p>現在は、個人事業主としてWindows業務アプリ開発やホームページ制作を行っています。</p>
-                
+                    
+                    <h4>開発・技術経歴</h4>
+                    <p>過去に神奈川県のシステム開発企業にて、業務管理システムや計算ソフトウェアの開発に従事。</p>
+                    <p>現在は、個人事業主として Windows 業務アプリ開発やホームページ制作を行っています。</p>
+                                    
                     <h2>Windows向け高機能関数電卓「S-Calc」開発</h2>
                     <p>
                         「S-Calc」は、<strong>Windowsで動作する高機能関数電卓ソフト</strong>です。<strong>科学計算やエンジニア向けの複雑な計算をサポート</strong>し、<strong>業務の効率化を実現</strong>します。
@@ -292,10 +322,17 @@
             </div>
         </div>
         <footer>
-            <p>© 2025 岡野 翔（おかの かける） - 個人事業主 | Windowsソフト開発 & ホームページ制作</p>
-            <p><a href="/contact/">岡野 翔へのお問い合わせ</a>| <a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a> | <a href="/privacy/">プライバシーポリシー</a></p>
-        </footer>
-    </body>
+            <small>© 2025 岡野 翔（おかの かける） - 個人事業主 | Windowsソフト開発 & ホームページ制作</small>
+          
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                  <li><a href="/contact/">岡野 翔へのお問い合わせ</a></li>
+                  <li><a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a></li>
+                  <li><a href="/privacy/">プライバシーポリシー</a></li>
+                </ul>
+              </nav>
+            </footer>
+        </body>
     <script>
     </script>
 </html>
