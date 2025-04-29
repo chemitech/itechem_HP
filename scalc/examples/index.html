@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>業務効率化・DX推進を支援 | Windowsソフト開発 & 関数電卓「S-Calc」</title>
+        <meta name="description" content="岡野 翔（おかの かける）- 個人事業主 | DX支援・業務効率化のためのWindowsソフト開発、関数電卓「S-Calc」の開発者。WPF・.NETを活用した業務システムで、エンジニア・企業の業務改善をサポート。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <meta name="author" content="岡野 翔">
+        <link rel="canonical" href="https://itechem.jp/">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                filter: brightness(1.2); /* 1.2倍明るくする */
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            .emailInput {
+                background: transparent;
+                border: 0px solid white;
+                color: black;
+                font-weight: bold;
+                font-size: large;
+                padding: 5px;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }
+            .section-title {
+                font-size: 26px;  /* h2より少し大きめ */
+                font-weight: bold;
+                color: #000;
+                margin-bottom: 10px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+            }
+
+            .dev-button-container {
+                text-align: left; /* 左寄せ */
+                padding-left: 210px; /* ボタンを少し右にずらす */
+                margin-top: 10px;
+            }
+
+            .dev-button {
+                display: inline-block;
+                background-color: #007BFF; /* 明るめの青 */
+                color: white;
+                font-weight: bold;
+                padding: 10px 15px;
+                border-radius: 5px;
+                text-decoration: none;
+                transition: background-color 0.3s ease-in-out;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 文字の影を追加 */
+            }
+
+            .dev-button:hover {
+                background-color: #0056b3; /* 少し暗い青 */
+            }
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+            .note {
+                font-size: 0.85rem;
+                color: #444; /* #333～#444 くらいが読みやすい */
+                margin-top: 0.5em;
+                line-height: 1.6;
+            }
+            .scalc-img {
+                max-width: 90%; /* 画面幅を超えないように */
+                height: auto; /* 縦横比を維持 */
+                border-radius: 8px; /* 角を少し丸めると綺麗 */
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 影を付けると見栄えが良い */
+            }
+            /* タブレット・PC向け（幅が768px以上の時） */
+            @media (min-width: 768px) {
+                .scalc-img {
+                    max-width: 45%; /* 画像を並べたときの適切なサイズ */
+                }
+            }
+
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <script>
+            if (window.location.pathname === "/index.html") {
+              window.location.replace("https://itechem.jp/");
+            }
+        </script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM8F7J1FC1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DM8F7J1FC1');
+        </script>
+        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                "@type": "WebSite",
+                "name": "Itechem",
+                "url": "https://itechem.jp/"
+                },
+                {
+                "@type": "Person",
+                "name": "岡野 翔",
+                "url": "https://itechem.jp/",
+                "sameAs": [
+                    "https://qiita.com/k_okano",
+                    "https://note.com/itechem",
+                    "https://twitter.com/techem_it"
+                ]
+                }
+            ]
+            }
+        </script>
+    
+    
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>Windows 関数電卓「S-Calc」- 高機能関数電卓 for Windows</h1>
+            </div>
+            <nav class="menu">
+                <a href="../../" class="link">Top</a>
+                <a href="../" class="link">S-Calc</a>
+                <a href="../../product/" class="link">Product</a>
+                <a href="../../development/" class="link">Development</a>
+                <a href="../../news/" class="link">News</a>
+                <a href="../../tips/" class="link">Tips & Tricks</a>
+                <a href="../../faq/" class="link">FAQ</a>
+                <a href="../../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h1>S-Calc | よくある使い方・計算例</h1>
+                    S-Calcで行える代表的な計算例をまとめました。
+
+                    <nav id="toc" style="margin-bottom: 40px;">
+                        <h2>よくある計算例　一覧</h2>
+                        <ul>
+                            <li>
+                                <a href="#basic">基本的な計算例</a>
+                                <ul>
+                                    <li><a href="#basic-arithmetic">四則演算</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#function">関数を使った計算例</a>
+                                <ul>
+                                    <li><a href="#trigonometricFunctions">三角関数の利用例</a></li>
+                                    <li><a href="#inverseTrigonometricFunctions">逆三角関数の利用例</a></li>
+                                    <li><a href="#exponentialFunction">指数関数と対数関数</a></li>
+                                    <li><a href="#squareFunction">平方根とべき乗計算</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#science">物理・化学に関する計算例</a>
+                                <ul>
+                                    <li><a href="#emphasis">力の計算（F = ma）</a></li>
+                                    <li><a href="#pressure">圧力の計算（P = F/A）</a></li>
+                                    <li><a href="#energy">エネルギーの計算（E = mc^2）</a></li>
+                                    <li><a href="#mol">モル濃度の計算</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <h2 id="basic">基本的な計算例</h2>
+                    <h3 id="basic-arithmetic">四則演算（加算・減算・乗算・除算）</h3>
+                    <b>四則演算は、S-Calcで直感的に行うことができます。</b>
+                    <br>
+                    例えば、次のように入力します。
+                    <h4>加算</h4>
+                    <img src="image/calcEX001.png" alt="加算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>減算</h4>
+                    <img src="image/calcEX002.png" alt="加算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>乗算</h4>
+                    <img src="image/calcEX003.png" alt="加算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>除算</h4>
+                    <img src="image/calcEX004.png" alt="加算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <br>
+                    <a href="#toc">目次へ戻る</a>
+
+                    <h2 id="function">関数を使った計算例</h2>
+                    <h3 id="trigonometricFunctions">三角関数の利用例</h3>
+                    <b>三角関数は度数法、弧度法の2種類に対応しています。</b>
+                    <h4>サイン（sin）：度数法</h4>
+                    <img src="image/calcEX005.png" alt="正弦（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>サイン（sin）：弧度法</h4>
+                    <img src="image/calcEX006.png" alt="正弦（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>コサイン（cos）：度数法</h4>
+                    <img src="image/calcEX007.png" alt="余弦（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>コサイン（cos）：弧度法</h4>
+                    <img src="image/calcEX008.png" alt="余弦（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>タンジェント（tan）：度数法</h4>
+                    <img src="image/calcEX009.png" alt="正接（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>タンジェント（tan）：弧度法</h4>
+                    <img src="image/calcEX010.png" alt="正接（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <br>
+                    <a href="#toc">目次へ戻る</a>
+                    
+                    <h3 id="inverseTrigonometricFunctions">逆三角関数の利用例</h3>
+                    <b>逆三角関数の解は度数法、弧度法の2種類に対応しています。</b>
+                    <h4>アークサイン（arcsin）：度数法</h4>
+                    <img src="image/calcEX012.png" alt="逆正弦（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>アークサイン（arcsin）：弧度法</h4>
+                    <img src="image/calcEX011.png" alt="逆正弦（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>アークコサイン（arccos）：度数法</h4>
+                    <img src="image/calcEX014.png" alt="逆余弦（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>アークコサイン（arccos）：弧度法</h4>
+                    <img src="image/calcEX013.png" alt="逆余弦（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>アークタンジェント（arctan）：度数法</h4>
+                    <img src="image/calcEX016.png" alt="逆正接（度数法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>アークタンジェント（arctan）：弧度法</h4>
+                    <img src="image/calcEX015.png" alt="逆正接（弧度法）" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <br>
+                    <a href="#toc">目次へ戻る</a>
+                    
+                    <h3 id="exponentialFunction">指数関数と対数関数</h3>
+                    <b>指数関数（eのべき乗）</b>と<b>対数関数（常用・自然）</b>を計算します。
+                    <h4>自然対数の底eの値</h4>
+                    <img src="image/calcEX017.png" alt="eの値" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>常用対数</h4>
+                    <img src="image/calcEX018.png" alt="常用対数" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>自然対数</h4>
+                    <img src="image/calcEX019.png" alt="自然対数" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <br>
+                    <a href="#toc">目次へ戻る</a>
+                    
+                    <h3 id="squareFunction">平方根とべき乗計算</h3>
+                    <b>平方根（√）</b>と<b>べき乗（^）</b>を計算します。
+                    <h4>平方根</h4>
+                    <img src="image/calcEX020.png" alt="平方根" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>べき乗</h4>
+                    <img src="image/calcEX021.png" alt="べき乗" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    
+                    <br>
+                    <a href="#toc">目次へ戻る</a>
+                    <br>
+                    <br>
+                    <b>べき乗計算で平方根や立方根の計算を行うことも出来ます。</b>
+                    <h4>平方根</h4>
+                    <img src="image/calcEX022.png" alt="べき乗を使った平方根計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <h4>立方根</h4>
+                    <img src="image/calcEX023.png" alt="べき乗を使った立方根計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <a href="#toc">目次へ戻る</a>
+
+                    <h2 id="science">物理・化学に関する計算例</h2>
+                    <h3 id="emphasis">力の計算（F = ma）</h3>
+                    <b>質量と加速度から力を求めます。</b>
+                    <br>
+                    ・質量：<b>2kg</b>, 加速度：<b>9.8m/s^2</b>
+                    <img src="image/calcEX024.png" alt="力の計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+
+                    <h3 id="pressure">圧力の計算（P = F/A）</h3>
+                    <b>力と面積から圧力を求めます。</b>
+                    <br>
+                    ・力：<b>500N</b>,面積：<b>50mm^2</b>
+                    <img src="image/calcEX025.png" alt="圧力の計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+
+                    <h3 id="energy">エネルギーの計算（E = mc^2）</h3>
+                    <b>質量からエネルギーを求めます。</b>
+                    <br>
+                    ・質量：<b>0.002kg</b>,光速：<b>3*10^8m/s</b>
+                    <img src="image/calcEX026.png" alt="エネルギーの計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+
+                    <h3 id="mol">モル濃度の計算</h3>
+                    <b>物質量と溶液の体積からモル濃度を求めます。</b>
+                    <br>
+                    ・物質量：<b>0.5mol</b>,体積：<b>2L</b>
+                    <img src="image/calcEX027.png" alt="モル濃度の計算" style="filter: contrast(110%) brightness(90%); width:65%; height:auto; display:block; margin:0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+                    <a href="#toc">目次へ戻る</a>
+
+                </div>
+            </div>
+        </div>
+        <footer>
+            <small>© 2025 岡野 翔（おかの かける） - 個人事業主 | Windowsソフト開発 & ホームページ制作</small>
+          
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                  <li><a href="../../contact/">岡野 翔へのお問い合わせ</a></li>
+                  <li><a href="https://x.com/techem_it" target="_blank">X（旧Twitter）</a></li>
+                  <li><a href="../../privacy/">プライバシーポリシー</a></li>
+                </ul>
+              </nav>
+        </footer>
+    </body>
+    <script>
+    </script>
+</html>
