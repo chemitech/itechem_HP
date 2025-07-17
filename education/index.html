@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc | Windows向け高機能関数電卓 - カスタム関数・定数対応</title>
+        <meta name="description" content="S-CalcはWindows向けの高機能関数電卓ソフト。S-Calcの使用例を記載している。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <meta name="author" content="岡野 翔">
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <link rel="canonical" href="https://itechem.jp/education/">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            .emailInput {
+                background: transparent;
+                border: 0px solid white;
+                color: black;
+                font-weight: bold;
+                font-size: large;
+                padding: 5px;
+            }
+            /* タブのスタイル */
+            .tab-container {
+                display: flex;
+                border-bottom: 2px solid #ccc;
+                margin-bottom: 10px;
+            }
+            .tab {
+                padding: 10px 20px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                background: #f4f4f4;
+                font-weight: bold;
+            }
+            .tab.active {
+                background: #fff;
+                border-top: 2px solid #007bff;
+                border-left: 2px solid #007bff;
+                border-right: 2px solid #007bff;
+            }
+            /* コンテンツのスタイル */
+            .tab-content {
+                display: none;
+                padding: 20px;
+                border: 2px solid #ccc;
+                background: #fff;
+            }
+            .tab-content.active {
+                display: block;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            } 
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM8F7J1FC1');
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>岡野 翔（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発</h1>
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../scalc/" class="link">S-Calc</a>
+                <a href="../product/" class="link">Product</a>
+                <a href="../development/" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a href="../faq/" class="link">FAQ</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <h2>高校・大学でよく使う関数まとめ：関数電卓S-Calc 活用ガイド</h2>
+
+                    <h3>はじめに</h3>
+                    S-Calcは、Windows向けの高機能関数電卓です。<br>
+                    高校・大学でよく使われる数式や関数にも対応しており、<b>学習・演習・検算の補助ツール</b>として幅広く活用いただけます。<br>
+                    本ページでは、<b>高校・大学の授業や自主学習で頻出する計算</b>を中心に、S-Calcの機能と使用例をご紹介します。<br>
+
+                    <h3>よく使う関数と使用例</h3>
+                    <h4>1.指数・対数（数学Ⅱ・理科・情報）</h4>
+                    <b>・常用対数（log10）</b><br>
+                    <img src="image/S-Calc_log.png" alt="常用対数計算" class="scalc-img"><br>
+                    <br>
+                    <b>・自然対数（ln）</b><br>
+                    <img src="image/S-Calc_ln.png" alt="自然対数計算" class="scalc-img"><br>
+                    <br>
+                    <b>・任意底の対数</b><br>
+                    <img src="image/S-Calc_log2.png" alt="任意底の対数計算" class="scalc-img"><br>
+                    S-Calcでは、log(a,b)形式で任意の底による対数計算が可能です。
+
+                    <h4>2.三角関数・逆三角関数（数学Ⅱ・物理）</h4>
+                    <b>・度数法による計算</b><br>
+                    <img src="image/S-Calc_sin.png" alt="正弦計算" class="scalc-img"><br>
+                    <br>
+                    <b>・弧度法による計算</b><br>
+                    <img src="image/S-Calc_cos.png" alt="余弦計算" class="scalc-img"><br>
+                    <br>
+                    <b>・逆三角関数による度数法と弧度法の解の算出</b><br>
+                    <img src="image/S-Calc_arcsin_degree.png" alt="逆正弦計算" class="scalc-img"><br>
+                    <img src="image/S-Calc_arcsin_rad.png" alt="逆正弦計算" class="scalc-img"><br>
+                    角度の単位（度数法・弧度法）は切り替え可能。<br>
+                    逆三角関数も<b>表示形式を選べます。</b>
+
+                    <h4>3.順列・組み合わせ（数学A・統計）</h4>
+                    <b>・順列</b><br>
+                    <img src="image/S-Calc_npr.png" alt="順列計算" class="scalc-img"><br>
+                    <br>
+                    <b>・組み合わせ</b><br>
+                    <img src="image/S-Calc_ncr.png" alt="組み合わせ計算" class="scalc-img"><br>
+                    簡単なボタン操作で<b>順列・組み合わせの計算が可能</b>です。
+
+                    <h4>4.平方根・虚数・絶対値（数学Ⅰ・数学C）</h4>
+                    <b>・虚数単位を含む演算</b><br>
+                    <img src="image/S-Calc_imag.png" alt="虚数単位計算" class="scalc-img"><br>
+                    <br>
+                    <b>・絶対値</b><br>
+                    <img src="image/S-Calc_abso.png" alt="絶対値計算" class="scalc-img"><br>
+                    負の平方根も正しく処理でき、<b>虚数iに対応</b>しています。
+
+                    <h4>5.実験系の計算（理科・大学一般教養）</h4>
+                    <b>・理想気体の法則</b>：PV=nRTの式をカスタム関数で登録可<br>
+                    <img src="image/S-Calc_RT÷PV.png" alt="理想気体計算" class="scalc-img"><br>
+                    <br>
+                    <b>・pH計算</b><br>
+                    <img src="image/S-Calc_mol.png" alt="pH計算" class="scalc-img"><br>
+                    <b>定数登録・カスタム関数</b>で、演習時の計算も再利用できます。
+
+                    <h3>S-Calcの教育向け特徴</h3>
+                    ・<b>式をそのまま入力できる</b>分かりやすい設計<br>
+                    ・<b>履歴自動保存</b>で振り返り・再計算が簡単<br>
+                    ・<b>定数・関数のカスタマイズ</b>で学習にフィット<br>
+                    ・<b>日本語・英語対応</b>で理系学生・留学生にも
+
+                    <h3>ダウンロード・製品情報</h3>
+                    <table border="1" cellpadding="8" cellspacing="0">
+                        <thead>
+                            <tr>
+                            <th>製品名</th>
+                            <th>特長</th>
+                            <th>リンク</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>S-Calc Full</td>
+                            <td>すべての機能を搭載</td>
+                            <td><a href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" target="_blank">Microsoft Storeで開く</a></td>
+                            </tr>
+                            <tr>
+                            <td>S-Calc Lite</td>
+                            <td>周期表機能を省いた軽量版</td>
+                            <td><a href="https://apps.microsoft.com/detail/9p97d0jkzkgw?hl=ja-JP&gl=JP" target="_blank">Microsoft Storeで開く</a></td>
+                            </tr>
+                            <tr>
+                            <td>S-Calc PeriodicViewer</td>
+                            <td>周期表機能のみを独立提供</td>
+                            <td><a href="https://apps.microsoft.com/detail/9p3nfqxk0qp1?hl=ja-JP&gl=JP" target="_blank">Microsoft Storeで開く</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>教育機関・教員の皆さまへ</h3>
+                    教材への導入・機能詳細のご相談などお気軽にご連絡ください。<br>
+                    ▶<a href="../contact/">お問い合わせフォームへ</a><br>
+                    <br>
+                    Newsページに<b>note</b>や<b>Qiita</b>に投稿している記事へのリンクを掲載しておりますので、<br>
+                    ご興味のある方はご覧になってください。<br>
+                    ▶<a href="../news/">Newsページへ</a>
+
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p><strong>岡野 翔（おかの かける）</strong> - 個人事業主 | Windowsソフト開発 & ホームページ制作</p>
+                        
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                    <li><a href="/contact/">岡野 翔へのお問い合わせ</a></li>
+                    <li>
+                        <a href="https://x.com/techem_it" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="X" style="width:16px; height:16px; vertical-align: middle; margin-right: 4px;">
+                            X（旧Twitter）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/%E7%BF%94-kakeru-%E5%B2%A1%E9%87%8E-okano-6b4143354" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" style="vertical-align: middle; margin-right: 4px;">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li><a href="/privacy/">プライバシーポリシー</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+    <script>
+        if (window.location.pathname === "/index.html") {
+            window.location.replace("https://itechem.jp/");
+        }
+        function openRelevantTab(selectedFAQ) {
+            Object.keys(faqData).forEach(tab => {
+                if (faqData[tab].includes(selectedFAQ)) {
+                    openTab(null, tab);
+                }
+            });
+        }
+
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.faq-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.faq-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
+        }
+
+        function toggleAnswer(id, element) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle("active");
+            element.classList.toggle("active"); // クリックされた `faq-item` に `active` を付与/削除
+        }
+
+        function showTab(tabId) {
+                            // 全てのタブを非アクティブにする
+                            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                            // クリックされたタブとコンテンツをアクティブにする
+                            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+                            document.getElementById(tabId).classList.add('active');
+                        }
+    </script>
+</html>
