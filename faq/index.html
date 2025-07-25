@@ -300,6 +300,22 @@
                                 A: 計算履歴は自動保存され、後から再利用可能です。
                             </div>
                         </div>
+                        <div class="faq-item" onclick="toggleAnswer('faq6',this)">
+                            <strong>Q: -e^(iπ) を入力したところ、答えが 1 ではなく 0 になってしまいます。これは不具合ですか？</strong>
+                            <div id="faq6" class="faq-answer" style="padding-left: 20px;">
+                                A: 不具合ではありません。</br>
+                                S-Calcでは数式の解釈にxFuncというライブラリを使用しており、</br>
+                                -e^xのような式を(-e)^xとして解釈します。</br>
+                                そのため、-e^(iπ)は<br>
+                                本来の-(e^(iπ))=-(-1)=1ではなく、<br>
+                                (-e)^(iπ)≒0に近い複素数として計算されてしまいます。<br>
+                                これは多くのプログラムや電卓アプリに見られる仕様上の制限です。<br>
+                                <b>回避方法</b><br>
+                                このような誤解を避けるため、括弧()を明示的に使用してください。<br>
+                                <b>正しい例：</b><br>
+                                -(e^(iπ))→正しく「1」となります。
+                            </div>
+                        </div>
                     </div>
                     
                     <div id="purchase" class="tab-content">
