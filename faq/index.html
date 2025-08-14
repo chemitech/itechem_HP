@@ -204,6 +204,18 @@
                 display: block;
                 margin-bottom: 0.3em;
             }
+            #principal-value-examples { margin: 1.5rem 0; }
+            #principal-value-examples .pv-examples {
+                border-collapse: collapse; width: 100%; max-width: 720px;
+            }
+            #principal-value-examples .pv-examples th,
+            #principal-value-examples .pv-examples td {
+                border: 1px solid #ddd; padding: 8px; text-align: left;
+            }
+            #principal-value-examples .pv-examples thead th {
+                background: #f5f7fb; font-weight: 600;
+            }
+            #principal-value-examples code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
         <script>
@@ -314,6 +326,52 @@
                                 このような誤解を避けるため、括弧()を明示的に使用してください。<br>
                                 <b>正しい例：</b><br>
                                 -(e^(iπ))→正しく「1」となります。
+                            </div>
+                        </div>
+                        <div class="faq-item" onclick="toggleAnswer('faq7',this)">
+                            <strong>Q: 複素数の計算結果が想定と違います。なぜですか？</strong>
+                            <div id="faq7" class="faq-answer" style="padding-left: 20px;">
+                                A: S-Calcでは、複素数の累乗や根号を計算する際に<b>「主値（principal value）」</b>を採用しています。<br>
+                                複素数には複数の根が存在しますが、<b>主値とは偏角（角度）が -π < θ ≤ π の範囲にある値</b>を指します。<br>
+                                これにより、同じ式でも「実数解」ではなく複素数が表示されることがあります。
+                                <section id="principal-value-examples">
+                                    <h3>主値（Principal Value）の計算例</h3>
+                                    <p>以下は S-Calc が返す <strong>主値</strong> の例です（小数は小数第5位で丸め）。</p>
+
+                                    <table class="pv-examples">
+                                        <thead>
+                                        <tr><th>式</th><th>主値の結果</th><th>備考</th></tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><code>(-9)^(1/2)</code></td>
+                                            <td><code>3.0i</code></td>
+                                            <td>純虚数の平方根</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>(-8)^(1/3)</code></td>
+                                            <td><code>1+1.7321i</code></td>
+                                            <td>実数解 -2 ではなく主値</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>(-16)^(1/4)</code></td>
+                                            <td><code>1.4142+1.4142i</code></td>
+                                            <td>偏角 45° の 4 乗根</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>(-27)^(1/6)</code></td>
+                                            <td><code>1.5+0.866i</code></td>
+                                            <td>偏角 30° の 6 乗根</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <small>※ S-Calc は複素数の累乗・根で主値（-π &lt; θ ≤ π）を返します。</small>
+                                </section>
+                                <img src="image/PrincipalValue001.png" alt="PrincipalValue001"/><br>
+                                <img src="image/PrincipalValue002.png" alt="PrincipalValue002"/><br>
+                                <img src="image/PrincipalValue003.png" alt="PrincipalValue003"/><br>
+                                <img src="image/PrincipalValue004.png" alt="PrincipalValue004"/><br>
                             </div>
                         </div>
                     </div>
