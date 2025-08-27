@@ -172,6 +172,60 @@
                 display: block;
                 margin-bottom: 0.3em;
             }
+            /* ベース */
+        .btn{
+        display:inline-block;
+        font: 600 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN","Noto Sans JP", Meiryo, sans-serif;
+        padding: .65rem 1rem;
+        border-radius: .5rem;
+        border: 1px solid transparent;
+        text-decoration: none;
+        transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+        white-space: nowrap;
+        }
+
+        /* 落ち着いたブルー（サイトに馴染む中間色） */
+        .btn-primary{
+        background-color:#2f6da8;      /* 通常 */
+        border-color:#2f6da8;
+        color:#fff;
+        }
+        .btn-primary:hover,
+        .btn-primary:focus{
+        background-color:#295f93;      /* ほんの少しだけ濃く */
+        border-color:#295f93;
+        box-shadow:0 0 0 3px rgba(47,109,168,.18);
+        }
+        /* Trial版のボタンカラー */
+        .btn-trial{
+        background-color:#2faf51;      /* 通常 */
+        border-color:#2faf51;
+        color:#fff;
+        }
+
+        /* アウトライン版（控えめに見せたい時） */
+        .btn-outline{
+        background-color:#fff;
+        color:#2f6da8;
+        border-color:#2f6da8;
+        }
+        .btn-outline:hover,
+        .btn-outline:focus{
+        background-color:#f3f7fb;
+        box-shadow:0 0 0 3px rgba(47,109,168,.18);
+        }
+
+        /* アクセシビリティ */
+        .btn:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(47,109,168,.3); }
+        .btn:active{ transform: translateY(1px); }
+        @media (prefers-reduced-motion: reduce){
+        .btn{ transition:none; }
+        }
+
+        /* スマホでの押しやすさ */
+        @media (max-width: 640px){
+        .btn{ width:100%; text-align:center; }
+        }
 
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
@@ -249,16 +303,14 @@
                         <h2>ライセンスプラン</h2>
                         <table border="1" cellpadding="8">
                         <tr>
-                          <th>機能</th><th>ライト版（3,300円）</th><th>フル版（5,500円）</th>
+                          <th>機能</th><th>ライト版（3,300円）</th><th>フル版（5,500円）</th><th>トライアル版（無料）</th>
                         </tr>
-                        <tr><td>基本計算機能</td><td align="center">✅</td><td align="center">✅</td></tr>
-                        <tr><td>定数機能</td><td align="center">✅</td><td align="center">✅</td></tr>
-                        <tr><td>カスタム関数</td><td align="center">✅</td><td align="center">✅</td></tr>
-                        <tr><td>計算履歴機能</td><td align="center">✅</td><td align="center">✅</td></tr>
-                        <tr><td>周期表機能</td><td align="center">❌</td><td align="center">✅</td></tr>
+                        <tr><td>基本計算機能</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅（計算20本までの体験）</td></tr>
+                        <tr><td>定数機能</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td></tr>
+                        <tr><td>カスタム関数</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td></tr>
+                        <tr><td>計算履歴機能</td><td align="center">✅</td><td align="center">✅</td><td align="center">✅</td></tr>
+                        <tr><td>周期表機能</td><td align="center">❌</td><td align="center">✅</td><td align="center">✅</td></tr>
                         </table>
-                        <br>
-                        <a href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" target="_blank">▶Microsoft Storeはこちら</a>
                         <br>
                         <p style="margin-top: 1.5em;">
                             <a href="../faq/" 
@@ -266,6 +318,12 @@
                             ❓ S-Calcに関するよくある質問（FAQ）を見る
                             </a>
                         </p>
+                        <img src="image/S-Calc_Trial.png" alt="トライアル版イメージ"  class="scalc-img"><br>
+                        <b>※📌 体験版では20回まで計算可能。画面下に残り回数が表示され、超過するとポップアップでお知らせします</b><br>
+                        <br>
+                        <a class="btn btn-outline" href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" target="_blank">▶S-Calc Fullはこちらから</a>
+                        <a class="btn btn-outline" href="https://apps.microsoft.com/detail/9p97d0jkzkgw?hl=ja-JP&gl=JP" target="_blank">▶S-Calc Liteはこちらから</a>
+                        <a class="btn btn-trial" href="https://apps.microsoft.com/detail/9n349bpjvm0x?hl=ja-JP&gl=JP" target="_blank">▶S-Calc Trialはこちらから</a>
                     </div>
                       
                     <div style="width: 100%; display: flex; justify-content: center;">
@@ -429,9 +487,14 @@
                     以下のリンクからMicrosoft Storeの購入ページを別タブで開くことが出来ます。<br>
                     <a href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" target="_blank">S-Calc Full を Microsoft Store で購入する</a>
                     <br>
+                    <br>
                     また、S-Calc LiteについてもMicrosoft Storeで公開されております。<br>
                     以下のリンクからMicrosoft Storeの購入ページを別タブで開くことが出来ます。<br>
                     <a href="https://apps.microsoft.com/detail/9p97d0jkzkgw?hl=ja-JP&gl=JP" target="_blank">S-Calc Lite を Microsoft Store で購入する</a>
+                    <br>
+                    <br>
+                    以下のURLから、20本の計算まで体験することが出来るトライアル版をダウンロードすることが出来ます。<br>
+                    <a href="https://apps.microsoft.com/detail/9n349bpjvm0x?hl=ja-JP&gl=JP" target="_blank">S-Calc Trial を Microsoft Store からダウンロードする</a>
                 </div>
             </div>
         </div>
