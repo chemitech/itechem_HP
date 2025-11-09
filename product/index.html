@@ -219,6 +219,54 @@
                 display: block;
                 margin-bottom: 0.3em;
             }
+            /* CSS */
+            .btn-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1em 0;
+            }
+
+            .store-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .store-btn.full {
+            color: #0a53be;
+            border: 2px solid #0a53be;
+            background-color: #fff;
+            }
+
+            .store-btn.lite {
+            color: #0a53be;
+            border: 2px solid #0a53be;
+            background-color: #fff;
+            opacity: 0.85;
+            }
+
+            .store-btn.trial {
+            background-color: #3cb371;
+            color: #fff;
+            border: 2px solid #3cb371;
+            }
+
+            /* ホバー時 */
+            .store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            opacity: 1;
+            }
+
+            /* トライアルボタンのホバーは色を濃く */
+            .store-btn.trial:hover {
+            background-color: #2e8b57;
+            }
 
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
@@ -284,7 +332,18 @@
                             <li>Windows環境でスムーズに動作、エンジニア向け最適化</li>
                         </ul>
                     
-                        <p><a href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" target="_blank"  class="buy-button">今すぐ購入 ▶</a></p>
+                        <!-- HTML -->
+                        <div class="btn-wrap">
+                            <a href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP" class="store-btn full" target="_blank">
+                                🏬 S-Calc Full（Microsoft Store）
+                            </a>
+                            <a href="https://apps.microsoft.com/detail/9p97d0jkzkgw?hl=ja-JP&gl=JP" class="store-btn lite" target="_blank">
+                                🏬 S-Calc Lite（Microsoft Store）
+                            </a>
+                            <a href="https://apps.microsoft.com/detail/9n349bpjvm0x?hl=ja-JP&gl=JP" class="store-btn trial" target="_blank">
+                                🧮 S-Calc Trial（無料体験版）
+                            </a>
+                        </div>
                     </section>
 
                     <p class="details-section">▼ S-Calcについて詳しく ▼</p>
