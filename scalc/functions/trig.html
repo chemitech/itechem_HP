@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc 関数ガイド：三角関数（sin, cos, tan）と度数・弧度切替</title>
+        <meta name="description" content="S-Calcの三角関数（sin, cos, tan）や逆三角関数、度数法・弧度法の切替方法を紹介します。物理・工学計算に最適。">
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <meta name="author" content="岡野 翔">
+        <link rel="canonical" href="https://itechem.jp/scalc/functions/trig">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            }
+            iframe{
+                max-width: 100%;
+            }
+     
+            .scalc-images {
+                display: flex;
+                flex-direction: column; /* 初期は縦並び */
+                align-items: center; /* 中央揃え */
+                gap: 15px; /* 画像間の余白 */
+            }
+
+            .scalc-img {
+                max-width: 90%; /* 画面幅を超えないように */
+                height: auto; /* 縦横比を維持 */
+                border-radius: 8px; /* 角を少し丸めると綺麗 */
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 影を付けると見栄えが良い */
+            }
+
+            /* タブレット・PC向け（幅が768px以上の時） */
+            @media (min-width: 768px) {
+                .scalc-images {
+                    flex-direction: row; /* 横並びにする */
+                    justify-content: center; /* 中央配置 */
+                    flex-wrap: wrap; /* 画面幅に応じて折り返し */
+                }
+                .scalc-img {
+                    max-width: 45%; /* 画像を並べたときの適切なサイズ */
+                }
+            }
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+            /* ベース */
+        .btn{
+        display:inline-block;
+        font: 600 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN","Noto Sans JP", Meiryo, sans-serif;
+        padding: .65rem 1rem;
+        border-radius: .5rem;
+        border: 1px solid transparent;
+        text-decoration: none;
+        transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+        white-space: nowrap;
+        }
+
+        /* 落ち着いたブルー（サイトに馴染む中間色） */
+        .btn-primary{
+        background-color:#2f6da8;      /* 通常 */
+        border-color:#2f6da8;
+        color:#fff;
+        }
+        .btn-primary:hover,
+        .btn-primary:focus{
+        background-color:#295f93;      /* ほんの少しだけ濃く */
+        border-color:#295f93;
+        box-shadow:0 0 0 3px rgba(47,109,168,.18);
+        }
+        /* Trial版のボタンカラー */
+        .btn-trial{
+        background-color:#2faf51;      /* 通常 */
+        border-color:#2faf51;
+        color:#fff;
+        }
+
+        /* アウトライン版（控えめに見せたい時） */
+        .btn-outline{
+        background-color:#fff;
+        color:#2f6da8;
+        border-color:#2f6da8;
+        }
+        .btn-outline:hover,
+        .btn-outline:focus{
+        background-color:#f3f7fb;
+        box-shadow:0 0 0 3px rgba(47,109,168,.18);
+        }
+
+        /* アクセシビリティ */
+        .btn:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(47,109,168,.3); }
+        .btn:active{ transform: translateY(1px); }
+        @media (prefers-reduced-motion: reduce){
+        .btn{ transition:none; }
+        }
+
+        /* スマホでの押しやすさ */
+        @media (max-width: 640px){
+        .btn{ width:100%; text-align:center; }
+        }
+        
+        /* CSS */
+        .btn-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 1em 0;
+        }
+
+        .store-btn {
+        display: inline-block;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .store-btn.full {
+        color: #0a53be;
+        border: 2px solid #0a53be;
+        background-color: #fff;
+        }
+
+        .store-btn.lite {
+        color: #0a53be;
+        border: 2px solid #0a53be;
+        background-color: #fff;
+        opacity: 0.85;
+        }
+
+        .store-btn.trial {
+        background-color: #3cb371;
+        color: #fff;
+        border: 2px solid #3cb371;
+        }
+
+        /* ホバー時 */
+        .store-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        opacity: 1;
+        }
+
+        /* トライアルボタンのホバーは色を濃く */
+        .store-btn.trial:hover {
+        background-color: #2e8b57;
+        }
+
+        .subnav {
+            width: 100%;
+            margin: 0;
+            padding: 8px 0 4px;
+            /* 背景はほんのり薄く */
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .subnav-list {
+            width: 100%;
+            padding: 0 5vw;            /* ← 左右に画面幅の5%だけ余白を追加 */
+            list-style: none;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+
+        .subnav-link {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: #123;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+        }
+
+        .subnav-link:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+        }
+
+        /* アクティブなタブ（現在のページ） */
+        .subnav-active {
+            font-weight: 600;
+            color: #0b3a8e;
+            background: rgba(230, 240, 255, 0.95);
+            border-color: rgba(40, 90, 180, 0.5);
+        }
+
+        figure {
+        display: inline-block; /* figure全体を画像サイズに合わせる */
+        margin: 1.5em 0;       /* 左寄せ維持 */
+        }
+
+        figure img {
+        display: block;        /* 画像をブロック化して下にcaptionが来るように */
+        width: 100%;           /* figure幅に合わせる */
+        height: auto;
+        }
+
+        figcaption {
+        text-align: center;    /* キャプション中央寄せ */
+        margin-top: 0.5em;
+        font-size: 0.95em;
+        color: #333;
+        }
+
+        /* スマホでの見え方調整 */
+        @media (max-width: 640px) {
+            .subnav {
+                padding: 6px 0 2px;
+            }
+            .subnav-list {
+                gap: 6px;
+                padding: 0 8px;
+            }
+            .subnav-link {
+                font-size: 0.9rem;
+                padding: 5px 10px;
+            }
+        }
+
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM8F7J1FC1');
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>S-Calc 関数ガイド：三角関数（sin, cos, tan）と度数・弧度切替</h1>
+            </div>
+            <nav class="menu">
+                <a href="../../" class="link">Top</a>
+                <a href="../" class="link">S-Calc</a>
+                <a href="../../product/" class="link">Product</a>
+                <a href="../../development/" class="link">Development</a>
+                <a href="../../news/" class="link">News</a>
+                <a href="../../tips/" class="link">Tips & Tricks</a>
+                <a href="../../faq/" class="link">FAQ</a>
+                <a href="../../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+
+        <nav class="subnav">
+            <ul class="subnav-list">
+                <li><a href="../../scalc/" class="subnav-link">概要</a></li>
+                <li><a href="../" class="subnav-link">関数ガイド一覧</a></li>
+                <li><a href="../periodic-viewer/" class="subnav-link">周期表ビューア</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="main">
+                <div class="main_content">
+                    <div style="background-color: #e6f0ff; padding: 1.5em; border-radius: 12px; margin-bottom: 2em; border: 1px solid #99c;">
+                        <h2>
+                            三角関数（sin, cos, tan）<br>
+                        </h2>
+                        <p>S-Calcは、度数法と弧度法の両方に対応した三角関数を利用する。</p>
+
+                        <h3>基本構文</h3>
+                        <h4>サイン（正弦）：</h4>
+                        <img src="image/sin1.png" alt="正弦度数法演算画面">
+                        <br>
+                        <img src="image/sin2.png" alt="正弦弧度法演算画面">
+                        <h4>コサイン（余弦）：</h4>
+                        <img src="image/cos1.png" alt="余弦度数法演算画面">
+                        <br>
+                        <img src="image/cos2.png" alt="余弦弧度法演算画面">
+                        <br>
+                        <h4>タンジェント（正接）：</h4>
+                        <img src="image/tan1.png" alt="正接度数法演算画面">
+                        <br>
+                        <img src="image/tan2.png" alt="正接弧度法演算画面">
+
+                        <p>
+                            角度は度数入力時に「°」ボタンを押下することで度数法を指定することが出来る。<br>
+                            「°」ボタンを押下しない場合、すべて弧度法として計算を行う。
+                        </p>
+
+                        <h2>
+                            逆三角関数（arcsin,arccos,arctan）<br>
+                        </h2>
+                        <p>逆三角関数の解は三角関数下のチェックボックスから「度数法」「弧度法」を選択することが出来る。</p>
+
+                        <h3>基本構文</h3>
+                        <h4>アークサイン（逆正弦）：</h4>
+                        <img src="image/arcsin_degree.png" alt="逆正弦度数法演算画面">
+                        <br>
+                        <img src="image/arcsin_radian.png" alt="逆正弦弧度法演算画面">
+                        <h4>アークコサイン（逆余弦）：</h4>
+                        <img src="image/arccos_degree.png" alt="逆余弦度数法演算画面">
+                        <br>
+                        <img src="image/arccos_radian.png" alt="逆余弦弧度法演算画面">
+                        <br>
+                        <h4>アークタンジェント（逆正接）：</h4>
+                        <img src="image/arctan_degree.png" alt="逆正接度数法演算画面">
+                        <br>
+                        <img src="image/arctan_radian.png" alt="逆正接弧度法演算画面">
+
+                        <h2>応用例</h2>
+                        <ul>
+                            <li><h3>波動計算：sin(ωt)</h3></li>
+
+                            波動・振動現象では、位置や時間による変化を<br>
+                            <b>y = Asin(ωt)</b><br>
+                            のように表す。<br>
+                            ここでは「ω：角周波数（rad/s）」「t：時間（s）」「A：振幅」。
+                            <h4>【計算例】</h4>
+                            <figure>
+                                <img src="image/waveCalc1.png" alt="波動計算演算画面１">
+                                <figcaption><b>初期位相0</b></figcaption>
+                            </figure>
+                            <br>
+                            <figure>
+                                <img src="image/waveCalc2.png" alt="波動計算演算画面２">
+                                <figcaption><b>1/4周期で最大振幅</b></figcaption>
+                            </figure>
+                            <br>
+                            <figure>
+                                <img src="image/waveCalc3.png" alt="波動計算演算画面３">
+                                <figcaption><b>振幅A=2の例</b></figcaption>
+                            </figure>
+                            <h4>補足</h4>
+                            <ul>
+                                <li>πはS-Calcで自動認識される円周率定数。</li>
+                                <li>sinはデフォルトで弧度法（Radian）を使用。カッコ内に"°"を用いることで度数法として計算することも可能。</li>
+                            </ul>
+
+                            <li><h3>ベクトルの角度解析：tan^(-1)(y/x)</h3></li>
+
+                            2次元平面上でベクトル(x,y)がx軸となす角θは<br>
+                            <b>θ = tan^(-1)(y/x)</b><br>
+                            で表す。<br>
+                            「建築」「機械」「ロボティクス」「電気回路」など幅広く利用される。
+                            <h4>【計算例】</h4>
+                            <figure>
+                                <img src="image/vector1_degree.png" alt="ベクトル角度解析演算画面１">
+                                <figcaption><b>傾き1に対応する角度（tan⁻¹）＝45°（度数法）</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/vector1_radian.png" alt="ベクトル角度解析演算画面２">
+                                <figcaption><b>傾き1に対応する角度（tan⁻¹）＝45°（弧度法）</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/vector2_degree.png" alt="ベクトル角度解析演算画面３">
+                                <figcaption><b>傾き0.5に対応する角度（tan⁻¹）＝26.57°（度数法）</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/vector2_radian.png" alt="ベクトル角度解析演算画面４">
+                                <figcaption><b>傾き0.5に対応する角度（tan⁻¹）＝26.57°（弧度法）</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/vector3_degree.png" alt="ベクトル角度解析演算画面５">
+                                <figcaption><b>傾き-1に対応する角度（tan⁻¹）＝-45°</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/vector3_radian.png" alt="ベクトル角度解析演算画面６">
+                                <figcaption><b>傾き-1に対応する角度（tan⁻¹）＝-45°</b></figcaption>
+                            </figure>
+                            
+                            <li><h3>建築構造計算：斜面角度・力分解</h3></li>
+                            斜面や梁にかかる力を成分に分ける際、三角関数を使う。<br>
+                            例えば斜面角θ=30°で、物体にかかる重力mg=100Nの場合：<br>
+                            <h4>斜面方向成分 = mgsinθ</h4>
+                            <h4>垂直方向成分 = mgcosθ</h4>
+                            <h4>【入力例】</h4>
+                            <figure>
+                                <img src="image/architectureCalc1.png" alt="建築構造計算演算画面１">
+                                <figcaption><b>斜面方向成分</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/architectureCalc2.png" alt="建築構造計算演算画面２">
+                                <figcaption><b>垂直方向成分</b></figcaption>
+                            </figure>
+                            <figure>
+                                <img src="image/architectureCalc3.png" alt="建築構造計算演算画面３">
+                                <figcaption><b>角度を変化させた場合</b></figcaption>
+                            </figure>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p><strong>岡野 翔（おかの かける）</strong> - 個人事業主 | Windowsソフト開発 & ホームページ制作</p>
+                        
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                    <li><a href="../../contact/">岡野 翔へのお問い合わせ</a></li>
+                    <li>
+                        <a href="https://x.com/techem_it" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="X" style="width:16px; height:16px; vertical-align: middle; margin-right: 4px;">
+                            X（旧Twitter）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/%E7%BF%94-kakeru-%E5%B2%A1%E9%87%8E-okano-6b4143354" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" style="vertical-align: middle; margin-right: 4px;">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li><a href="../../privacy/">プライバシーポリシー</a></li>
+                    <br>
+                    <li>
+                        🔗 note「<a href="https://note.com/itechem/m/mb6388a5a4f39" target="_blank">Windowsで出来る！理系計算術</a>」<br>
+                        化学 / 物理 / 統計の計算をわかりやすく解説しています
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>
