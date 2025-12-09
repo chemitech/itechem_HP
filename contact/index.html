@@ -154,14 +154,6 @@
 
         </style>
         <link rel="icon" type="image/png" href="image/icon.png">
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-DM8F7J1FC1');
-        </script>
-
     </head>
     <body>
         <header class="header">
@@ -187,8 +179,9 @@
                     <p><strong>お問い合わせ方法</strong></p>
                     <p style="margin-left: 20px;">お問い合わせの返信には数日かかる場合があります。</p>
                     <p style="margin-left: 20px;">お問い合わせ先のメールアドレスは以下の通りです。</p>
-                    <p style="margin-left: 20px;"><input id="emailInput" type="text" value="inquiry@itechem.jp" readonly="true"></input>
-                        <button onclick="copyToClipboard('emailInput')">コピー</button>
+                    <p style="margin-left: 20px;">
+                        <img src="image/mailAddress.png" alt="送付先メールアドレス" style="width: 25%; height: 25%;"/>
+                        <button id="copyBtn">コピー</button>
                     </p>
                     <script src="script/emailText.js"></script>
                     <script src="script/emailCopy.js"></script>
@@ -239,4 +232,27 @@
             </nav>
         </footer>
     </body>
+    <script>
+    /* --- Google Analytics --- */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DM8F7J1FC1');
+
+    /* --- Email Copy Script --- */
+    (() => {
+        const user = "inquiry";
+        const domain = "itechem.jp";
+        const email = `${user}@${domain}`;
+
+        document.getElementById("copyBtn").addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(email);
+                alert(`コピーしました：\n${email}`);
+            } catch {
+                window.prompt("コピーできない場合は手動でコピーしてください。", email);
+            }
+        });
+    })();
+    </script>
 </html>
