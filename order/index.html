@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc | ご注文フォーム</title>
+        <meta name="description" content="S-Calcのご注文フォームです。メディア形式でのご購入を希望の方はこちらからご注文をお願い申し上げます。" />
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="岡野 翔">
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <link rel="canonical" href="https://itechem.jp/order/">
+        <style>
+            .main_content{
+                background: rgba(255, 255, 255, 0.85); /* 透明度を少し下げる */
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                padding: 30px; /* 内側の余白を増やす */
+                margin: 50px auto; /* 外側の余白を増やす */
+                width: 85%; /* 横幅を少し広げてバランスを取る */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            p {
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+            .header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                border-bottom: 2px solid #ddd;
+                width: 100%;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center/cover;
+                flex-wrap: wrap;  /* 画面幅が狭いときに要素を折り返し */
+            }
+            body {
+                font-family: 'Roboto', sans-serif; /* Google Fonts */
+                background: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-size: cover;
+                
+                /* 半透明の背景を追加 */
+                backdrop-filter: blur(5px) brightness(0.8); /* ぼかし+暗め調整 */
+            }
+            /* 事業名（ロゴ）のスタイル */
+            .logo {
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left; /* 明示的に左寄せ */
+                flex-shrink: 0; /* ロゴが伸縮しないようにする */
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1.0); /* 文字に影をつけて読みやすくする */  
+                line-height: 1.4; /* 行間を広げる */
+                
+                /* 折り返しを許可 */
+                white-space: normal; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                max-width: 90%; /* 画面の幅を超えないように制限 */
+            }
+
+            /* メニュー */
+            .menu {
+                display: flex;
+                gap: 20px; /* 適度な間隔 */
+                flex-wrap: wrap; /* 画面が狭くなったときに自動で折り返し */
+                justify-content: left; /* 左寄せ */
+                max-width: 100%; /* 幅を最大限使えるように */
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* ホバー時 */
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8); /* ホバー時に濃い青 */
+                color: white;
+            }
+
+            .link{
+                background-color: white;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now{
+                background-color: gray;
+                border-color: black;
+                display: inline-block;
+                padding: 5px 10px;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+            .emailInput {
+                background: transparent;
+                border: 0px solid white;
+                color: black;
+                font-weight: bold;
+                font-size: large;
+                padding: 5px;
+            }
+            /* タブのスタイル */
+            .tab-container {
+                display: flex;
+                border-bottom: 2px solid #ccc;
+                margin-bottom: 10px;
+            }
+            .tab {
+                padding: 10px 20px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-bottom: none;
+                background: #f4f4f4;
+                font-weight: bold;
+            }
+            .tab.active {
+                background: #fff;
+                border-top: 2px solid #007bff;
+                border-left: 2px solid #007bff;
+                border-right: 2px solid #007bff;
+            }
+            /* コンテンツのスタイル */
+            .tab-content {
+                display: none;
+                padding: 20px;
+                border: 2px solid #ccc;
+                background: #fff;
+            }
+            .tab-content.active {
+                display: block;
+            }
+            .faq-container { width: 80%; margin: auto; }
+            .faq-tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+            .faq-tab { padding: 10px; cursor: pointer; border: 1px solid #ccc; background: #f4f4f4; }
+            .faq-tab.active { background: #ddd; font-weight: bold; }
+            .faq-content { display: none; padding: 10px; border: 1px solid #ccc; background: #fff; }
+            .faq-content.active { display: block; }
+            .faq-item { border-bottom: 1px solid #ccc; padding: 10px 0; cursor: pointer; }
+            .faq-answer { display: none; padding: 5px; background: #f9f9f9; margin-top: 5px; }
+            .faq-answer.active { display: block; }
+            .highlight { background: yellow; font-weight: bold; }
+            .search-box { margin-bottom: 10px; }
+            .search-box input { width: 200px; padding: 5px; }
+            .search-results { margin-top: 10px; }
+            .nav-buttons { margin-top: 5px; }
+            .hidden { display: none; }
+            /* 追加: Q(質問)部分にカーソルを合わせると文字色を青に変更 */
+            .faq-item strong:hover {
+                color: blue;
+            }
+            .faq-item.active strong {
+                color: red; /* クリックされたQの文字色を赤に変更 */
+            }
+            footer {
+                background-color: #f0f0f0; /* 薄いグレー */
+                text-align: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下に余白 */
+                font-size: 14px; /* 少し小さめのフォント */
+            }
+
+            footer a {
+                color: #555; /* リンクの色を少し落ち着いた色に */
+                text-decoration: none; /* 下線を消す */
+                margin: 0 10px; /* 横に間隔 */
+            }
+
+            footer a:hover {
+                text-decoration: underline; /* ホバー時に下線 */
+            } 
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+            footer small {
+                font-size: 1.1rem;
+                font-weight: 500; /* 少し太め */
+                display: block;
+                margin-bottom: 0.3em;
+            }
+            #principal-value-examples { margin: 1.5rem 0; }
+            #principal-value-examples .pv-examples {
+                border-collapse: collapse; width: 100%; max-width: 720px;
+            }
+            #principal-value-examples .pv-examples th,
+            #principal-value-examples .pv-examples td {
+                border: 1px solid #ddd; padding: 8px; text-align: left;
+            }
+            #principal-value-examples .pv-examples thead th {
+                background: #f5f7fb; font-weight: 600;
+            }
+            #principal-value-examples code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+            /* CSS */
+            .btn-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1em 0;
+            }
+
+            .store-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .store-btn.full {
+            color: #0a53be;
+            border: 2px solid #0a53be;
+            background-color: #fff;
+            }
+
+            .store-btn.lite {
+            color: #0a53be;
+            border: 2px solid #0a53be;
+            background-color: #fff;
+            opacity: 0.85;
+            }
+
+            .store-btn.trial {
+            background-color: #3cb371;
+            color: #fff;
+            border: 2px solid #3cb371;
+            }
+
+            /* ホバー時 */
+            .store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            opacity: 1;
+            }
+
+            /* トライアルボタンのホバーは色を濃く */
+            .store-btn.trial:hover {
+            background-color: #2e8b57;
+            }
+        </style>
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM8F7J1FC1');
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>岡野 翔（個人事業主） - Windows向け高機能関数電卓「S-Calc」ご注文フォーム</h1>
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../scalc/" class="link">S-Calc</a>
+                <a href="../product/" class="link">Product</a>
+                <a href="../development/" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a href="../faq/">FAQ</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <div class="main_content">
+                <h2>法人・団体向け購入（請求書払い）</h2>
+                <p>
+                    本ページは、法人・団体・教育機関等のお客様向けに、
+                    <b>請求書払い（銀行振り込み）</b>でのご購入手順をご案内します。<br>
+                    個人のお客様で「すぐに利用したい」場合は、以下の<b>Microsoft Store</b>からの購入もご利用いただけます。
+                </p>
+
+                <div class="btn-wrap">
+                    <a
+                    href="https://apps.microsoft.com/detail/9n2gm51phq7p?hl=ja-JP&gl=JP"
+                    class="store-btn full"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    🏬 S-Calc Full（Microsoft Store）
+                    </a>
+                    <a
+                    href="https://apps.microsoft.com/detail/9p97d0jkzkgw?hl=ja-JP&gl=JP"
+                    class="store-btn lite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    🏬 S-Calc Lite（Microsoft Store）
+                    </a>
+                </div>
+
+                <h3>ご購入の流れ</h3>
+                <ol>
+                    <li>お客様：本ページのフォーマットに沿って注文メールを送付</li>
+                    <li>当方：内容確認後、<b>見積書（PDF）</b>をメールで送付</li>
+                    <li>お客様：見積内容に問題が無ければ、見積メールへ「<b>発注します</b>」または「<b>注文します</b>」と返信</li>
+                    <li>当方：返信を受領後、<b>請求書（PDF）</b>を送付</li>
+                    <li>お客様：支払期限までにお振込み（振込手数料はお客様負担）</li>
+                    <li>当方：入金確認後、<b>CD-Rにて発送</b>します</li>
+                </ol>
+                <p><b>※「発注します」または「注文します」の返信をもって注文確定とします。</b></p>
+
+                <h3>対応範囲・前提</h3>
+                <ul>
+                    <li>対応：見積書／請求書（PDF）発行、入金確認、CD-R納品</li>
+                    <li>検収：<b>起動確認まで</b>を検収とします</li>
+                    <li>ライセンス：原則 <b>1ライセンス＝1台（端末単位）</b></li>
+                </ul>
+
+                <h3>発送・送料</h3>
+                <ul>
+                    <li>発送目安：入金確認後 <b>5営業日以内</b>に発送します</li>
+                    <li>送料：<b>別途ご請求</b>させていただきます（複数本数は同梱の可否を確認のうえご案内します）</li>
+                    <li>発送方法：追跡可能な方法で発送します</li>
+                </ul>
+
+                <h3>お支払い</h3>
+                <ul>
+                    <li>お支払い方法：銀行振り込み</li>
+                    <li>支払期限：請求書に記載の期限までにお支払いください</li>
+                    <li>振込手数料：お客様負担</li>
+                </ul>
+
+                <h3>キャンセル・変更</h3>
+                <ul>
+                    <li>注文確定（「発注します」または「注文します」返信）後のキャンセルは原則お受けできません。</li>
+                    <li>数量や宛先などの変更がある場合は、注文確定前にご連絡ください。</li>
+                </ul>
+
+                <h3>再送・再発行</h3>
+                <ul>
+                    <li>CD-Rの再送が必要な場合、状況により <b>送料等をご負担</b> いただく場合があります。</li>
+                    <li>ライセンスや納品物の再発行については、個別にご相談ください。</li>
+                </ul>
+
+                <h3>個人情報の取り扱い</h3>
+                <p>
+                    ご注文に伴い取得した情報は、取引対応（見積／請求／納品）に必要な範囲で利用します。<br>
+                    詳細は <a href="/privacy/">プライバシーポリシー</a> をご確認ください。
+                </p>
+
+                <h3>反社会的勢力の排除</h3>
+                <p>反社会勢力等への提供はお断りします。</p>
+
+                <h2>注文方法（メール）</h2>
+
+                <h3>注文送付先メール</h3>
+                <p>
+                    inquiry[@]itechem.jp<br>
+                    ※送信時は[@]を半角の@に置き換えてください。
+                </p>
+
+                <h3>件名フォーマット（指定）</h3>
+                <p>
+                    <b>件名：</b>【注文】{製品名}／{数量}／{法人・団体名}／{担当者名}
+                </p>
+
+                <p><b>記入例：</b></p>
+                <ul>
+                    <li>【注文】S-Calc Full／1／〇〇株式会社／山田 太郎</li>
+                    <li>【注文】Periodic Viewer／5／△△大学 理学部／佐藤 花子</li>
+                </ul>
+
+                <h3>注文メールテンプレート</h3>
+
+                <pre style="font-size:1rem">
+                【注文内容】
+                ■法人・団体名：
+                ■部署名：
+                ■担当者名：
+                ■メールアドレス：
+                ■電話番号：（任意）
+
+                【購入商品】
+                ■製品名：
+                ■数量（ライセンス数）：
+
+                【見積書・請求書】
+                ■宛名：（法人名と同一である場合「同上」）
+                ■支払期限の希望：（例：請求書発行から30日／翌月末など。指定が無ければ請求書発行から30日となります）
+                ■領収書：要／不要
+
+                【納品（CD-R発送）】
+                ■郵便番号：
+                ■住所：
+                ■宛名：
+
+                【備考】
+                （例：見積書に記載してほしい事項、稟議上の注意点、希望納期など）
+                </pre>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p><strong>岡野 翔（おかの かける）</strong> - 個人事業主 | Windowsソフト開発 & ホームページ制作</p>
+                        
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                    <li><a href="../contact/">岡野 翔へのお問い合わせ</a></li>
+                    <li>
+                        <a href="https://x.com/techem_it" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="X" style="width:16px; height:16px; vertical-align: middle; margin-right: 4px;">
+                            X（旧Twitter）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/%E7%BF%94-kakeru-%E5%B2%A1%E9%87%8E-okano-6b4143354" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" style="vertical-align: middle; margin-right: 4px;">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li><a href="/privacy/">プライバシーポリシー</a></li>
+                    <br>
+                    <li>
+                        🔗 note「<a href="https://note.com/itechem/m/mb6388a5a4f39" target="_blank">Windowsで出来る！理系計算術</a>」<br>
+                        化学 / 物理 / 統計の計算をわかりやすく解説しています
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+    <script>
+        if (window.location.pathname === "/index.html") {
+            window.location.replace("https://itechem.jp/");
+        }
+        function openRelevantTab(selectedFAQ) {
+            Object.keys(faqData).forEach(tab => {
+                if (faqData[tab].includes(selectedFAQ)) {
+                    openTab(null, tab);
+                }
+            });
+        }
+
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.faq-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.faq-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
+        }
+
+        function toggleAnswer(id, element) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle("active");
+            element.classList.toggle("active"); // クリックされた `faq-item` に `active` を付与/削除
+        }
+
+        function showTab(tabId) {
+                            // 全てのタブを非アクティブにする
+                            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                            // クリックされたタブとコンテンツをアクティブにする
+                            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+                            document.getElementById(tabId).classList.add('active');
+                        }
+    </script>
+</html>
