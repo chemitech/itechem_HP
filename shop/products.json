@@ -1,0 +1,119 @@
+[
+    {
+        "id": 1,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 2,
+        "name": "S-Calc Lite",
+        "price": 2000,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0002.png",
+        "url": "s-calc-lite.html"
+    },
+    {
+        "id": 3,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 4,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 5,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 6,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 7,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 8,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 9,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 10,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 11,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 12,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    },
+    {
+        "id": 13,
+        "name": "S-Calc Full",
+        "price": 3950,
+        "seller": "岡野 翔",
+        "category": "software",
+        "image": "image/0001.png",
+        "url": "s-calc-full.html"
+    }
+]
