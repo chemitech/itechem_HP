@@ -1,0 +1,510 @@
+            /* ========================================
+            共通スタイル
+            itechem.jp
+            ======================================== */
+
+            /* ========================================
+            全体設定
+            ======================================== */
+            html {
+                box-sizing: border-box;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: inherit;
+            }
+
+            body {
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+                font-family: 'Roboto', sans-serif;
+                position: relative;
+                background-color: #f5f5f5;
+            }
+
+            /* 背景画像専用レイヤー */
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: url('image/c8ced6c1-b13d-4009-bf14-5730ed4f5a1e (1).webp');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                filter: blur(5px) brightness(0.8);
+                transform: scale(1.02);
+                z-index: -1;
+            }
+
+            /* ========================================
+            メインコンテンツ
+            ======================================== */
+            .main {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .main_content {
+                width: 85%;
+                max-width: 1200px;
+                margin: 50px auto;
+                padding: 30px;
+                background: rgba(255, 255, 255, 0.85);
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            /* ========================================
+            基本文字
+            ======================================== */
+            p {
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: bold;
+                margin-top: 20px;
+            }
+
+            /* ========================================
+            ヘッダー
+            ======================================== */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                max-width: 100%;
+                padding: 10px 0;
+                border-bottom: 2px solid #ddd;
+                background: url('image/a48b2d03-28dd-4309-8951-240c500c541b.webp') no-repeat center center / cover;
+            }
+
+            /* ========================================
+            ロゴ
+            ======================================== */
+            .logo {
+                max-width: 90%;
+                flex-shrink: 0;
+                font-size: 1.6em;
+                font-weight: bold;
+                color: white;
+                text-align: left;
+                line-height: 1.4;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+                white-space: normal;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            /* ========================================
+            メインメニュー
+            ======================================== */
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: flex-start;
+                max-width: 100%;
+            }
+
+            .menu a {
+                background-color: rgba(255, 255, 255, 0.7);
+                border: 2px solid #0044cc;
+                padding: 8px 12px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .menu a:hover {
+                background-color: rgba(0, 68, 204, 0.8);
+                color: white;
+            }
+
+            .link {
+                display: inline-block;
+                padding: 5px 10px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            .now {
+                display: inline-block;
+                padding: 5px 10px;
+                background-color: gray;
+                border: 2px solid black;
+                border-radius: 5px;
+                line-height: 20px;
+                font-size: x-large;
+            }
+
+            /* ========================================
+            サブナビ
+            ======================================== */
+            .subnav {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 8px 0 4px;
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(4px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            }
+
+            .subnav-list {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 5vw;
+                margin: 0;
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: flex-start;
+            }
+
+            .subnav-link {
+                display: inline-block;
+                padding: 6px 12px;
+                border-radius: 999px;
+                font-size: 0.95rem;
+                text-decoration: none;
+                color: #123;
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+            }
+
+            .subnav-link:hover {
+                background: rgba(255, 255, 255, 0.95);
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                transform: translateY(-1px);
+            }
+
+            .subnav-active {
+                font-weight: 600;
+                color: #0b3a8e;
+                background: rgba(230, 240, 255, 0.95);
+                border-color: rgba(40, 90, 180, 0.5);
+            }
+
+            /* ========================================
+            iframe
+            ======================================== */
+            iframe {
+                max-width: 100%;
+            }
+
+            /* ========================================
+            S-Calc画像
+            ======================================== */
+            .scalc-images {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .scalc-img {
+                display: block;
+                max-width: 90%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* ========================================
+            周期表デモ動画
+            ======================================== */
+            .scalc-periodic-video {
+                width: 100%;
+                max-width: 900px;
+                margin: 30px auto;
+                text-align: center;
+            }
+
+            .scalc-periodic-video video {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+                border-radius: 6px;
+            }
+
+            .scalc-video-caption {
+                margin-top: 12px;
+                margin-bottom: 0;
+            }
+
+            /* ========================================
+            YouTube
+            ======================================== */
+            .youtube-video {
+                width: 100%;
+                max-width: 720px;
+                margin: 0 auto 30px;
+                aspect-ratio: 16 / 9;
+            }
+
+            .youtube-video iframe {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+            /* ========================================
+            テーブル
+            ======================================== */
+            table {
+                max-width: 100%;
+            }
+
+            th,
+            td {
+                overflow-wrap: break-word;
+                word-break: normal;
+            }
+
+            /* ========================================
+            ボタン
+            ======================================== */
+            .btn {
+                display: inline-block;
+                font: 600 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+                padding: 0.65rem 1rem;
+                border-radius: 0.5rem;
+                border: 1px solid transparent;
+                text-decoration: none;
+                transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+                white-space: nowrap;
+            }
+
+            .btn-primary {
+                background-color: #2f6da8;
+                border-color: #2f6da8;
+                color: #fff;
+            }
+
+            .btn-primary:hover,
+            .btn-primary:focus {
+                background-color: #295f93;
+                border-color: #295f93;
+                box-shadow: 0 0 0 3px rgba(47, 109, 168, 0.18);
+            }
+
+            .btn-trial {
+                background-color: #2faf51;
+                border-color: #2faf51;
+                color: #fff;
+            }
+
+            .btn-outline {
+                background-color: #fff;
+                color: #2f6da8;
+                border-color: #2f6da8;
+            }
+
+            .btn-outline:hover,
+            .btn-outline:focus {
+                background-color: #f3f7fb;
+                box-shadow: 0 0 0 3px rgba(47, 109, 168, 0.18);
+            }
+
+            .btn:focus-visible {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(47, 109, 168, 0.3);
+            }
+
+            .btn:active {
+                transform: translateY(1px);
+            }
+
+            /* ========================================
+            Microsoft Storeボタン
+            ======================================== */
+            .btn-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin: 1em 0;
+            }
+
+            .store-btn {
+                display: inline-block;
+                max-width: 100%;
+                padding: 10px 18px;
+                border-radius: 8px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .store-btn.full {
+                color: #0a53be;
+                border: 2px solid #0a53be;
+                background-color: #fff;
+            }
+
+            .store-btn.lite {
+                color: #0a53be;
+                border: 2px solid #0a53be;
+                background-color: #fff;
+                opacity: 0.85;
+            }
+
+            .store-btn.trial {
+                background-color: #3cb371;
+                color: #fff;
+                border: 2px solid #3cb371;
+            }
+
+            .store-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                opacity: 1;
+            }
+
+            .store-btn.trial:hover {
+                background-color: #2e8b57;
+            }
+
+            /* ========================================
+            フッター
+            ======================================== */
+            footer {
+                width: 100%;
+                max-width: 100%;
+                padding: 10px 0;
+                background-color: #f0f0f0;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            footer a {
+                color: #555;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            ul.footer-links {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            ul.footer-links li {
+                display: inline;
+                margin-right: 1em;
+            }
+
+            footer small {
+                display: block;
+                margin-bottom: 0.3em;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+
+            /* ========================================
+            タブレット・PC
+            ======================================== */
+            @media (min-width: 768px) {
+                .scalc-images {
+                    flex-direction: row;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+
+                .scalc-img {
+                    max-width: 45%;
+                }
+            }
+
+            /* ========================================
+            スマートフォン
+            ======================================== */
+            @media (max-width: 640px) {
+                .main_content {
+                    width: 95%;
+                    margin: 20px auto;
+                    padding: 15px;
+                }
+
+                .logo {
+                    max-width: 100%;
+                }
+
+                .menu {
+                    gap: 8px;
+                }
+
+                .link,
+                .now {
+                    font-size: 1rem;
+                }
+
+                .subnav {
+                    padding: 6px 0 2px;
+                }
+
+                .subnav-list {
+                    gap: 6px;
+                    padding: 0 8px;
+                }
+
+                .subnav-link {
+                    font-size: 0.9rem;
+                    padding: 5px 10px;
+                }
+
+                .btn,
+                .store-btn {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .scalc-periodic-video {
+                    margin: 20px auto;
+                }
+
+                .scalc-img {
+                    max-width: 100%;
+                }
+            }
+
+            /* ========================================
+            動きを減らす設定
+            ======================================== */
+            @media (prefers-reduced-motion: reduce) {
+                .btn,
+                .store-btn,
+                .menu a,
+                .subnav-link {
+                    transition: none;
+                }
+            }
