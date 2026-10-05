@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>S-Calc | Windows向け高機能関数電卓 - カスタム関数・定数対応</title>
+        <meta name="description" content="S-CalcはWindows向けの高機能関数電卓ソフト。S-Calcの導入方法や利用方法についてのFAQを記載している。" />
+        <meta name="robots" content="index, follow">
+        <meta name="google-site-verification" content="68vXnzcD4UkEi8GOAbWDhZW4fl-yC4Z0P6494neXYOI" />
+        <meta name="author" content="岡野 翔">
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <link rel="canonical" href="https://itechem.jp/faq/">
+        <style>
+
+        </style>
+        <link rel="stylesheet" href="../style/common.css">
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DM8F7J1FC1');
+        </script>
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+            "@type": "Question",
+            "name": "S-Calcの対応OSは何ですか？",
+            "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Windows 10およびWindows 11に対応しています。"
+                            }
+            },
+            {
+            "@type": "Question",
+            "name": "購入方法を教えてください。",
+            "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Microsoft Storeで公開中です。メールでのご注文も承っております。"
+                            }
+            }
+        ]
+        }
+        </script>
+    
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>岡野 翔（個人事業主） - Windows向け高機能関数電卓「S-Calc」開発</h1>
+            </div>
+            <nav class="menu">
+                <a href="../" class="link">Top</a>
+                <a href="../scalc/" class="link">S-Calc</a>
+                <a href="../product/" class="link">Product</a>
+                <a href="../development/" class="link">Development</a>
+                <a href="../news/" class="link">News</a>
+                <a href="../tips/" class="link">Tips & Tricks</a>
+                <a href="../faq/" class="link">FAQ</a>
+                <a href="../contact/" class="link">Contact</a>
+            </nav>
+        </header>
+        <div>
+            <div class="main">
+                <iframe src="pdf/test.pdf" width="300px" height="600px" title="サンプルPDF"></iframe>
+            </div>
+        </div>
+        <footer>
+            <p><strong>岡野 翔（おかの かける）</strong> - 個人事業主 | Windowsソフト開発 & ホームページ制作</p>
+                        
+            <nav aria-label="フッターナビゲーション">
+                <ul class="footer-links">
+                    <li><a href="/contact/">岡野 翔へのお問い合わせ</a></li>
+                    <li>
+                        <a href="https://x.com/techem_it" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="X" style="width:16px; height:16px; vertical-align: middle; margin-right: 4px;">
+                            X（旧Twitter）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/%E7%BF%94-kakeru-%E5%B2%A1%E9%87%8E-okano-6b4143354" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" style="vertical-align: middle; margin-right: 4px;">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li><a href="/privacy/">プライバシーポリシー</a></li>
+                    <br>
+                    <li>
+                        🔗 note「<a href="https://note.com/itechem/m/mb6388a5a4f39" target="_blank">Windowsで出来る！理系計算術</a>」<br>
+                        化学 / 物理 / 統計の計算をわかりやすく解説しています
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+    <script>
+        if (window.location.pathname === "/index.html") {
+            window.location.replace("https://itechem.jp/");
+        }
+        function openRelevantTab(selectedFAQ) {
+            Object.keys(faqData).forEach(tab => {
+                if (faqData[tab].includes(selectedFAQ)) {
+                    openTab(null, tab);
+                }
+            });
+        }
+
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.faq-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.faq-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
+        }
+
+        function toggleAnswer(id, element) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle("active");
+            element.classList.toggle("active"); // クリックされた `faq-item` に `active` を付与/削除
+        }
+
+        function showTab(tabId) {
+                            // 全てのタブを非アクティブにする
+                            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                            // クリックされたタブとコンテンツをアクティブにする
+                            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+                            document.getElementById(tabId).classList.add('active');
+                        }
+    </script>
+</html>
